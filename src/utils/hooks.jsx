@@ -24,22 +24,25 @@ export const useRenderContactHelpText = (enterpriseConfig) => {
   return renderContactHelpText;
 };
 
+let cachedApiKey = null;
+
 export const useAlgoliaSearchApiKey = (config) => {
   // If the search API key is not provided in the config,
   // fetch it from `ALGOLIA_SECURED_KEY_ENDPOINT`.
 
-  const [searchApiKey, setSearchApiKey] = useState(config.ALGOLIA_SEARCH_API_KEY);
+  const [searchApiKey, setSearchApiKey] = useState(cachedApiKey || config.ALGOLIA_SEARCH_API_KEY);
 
   useEffect(() => {
     const fetchApiKey = async () => {
       const key = await fetchAlgoliaSecuredApiKey();
+      cachedApiKey = key;
       setSearchApiKey(key);
     };
 
-    if (!config.ALGOLIA_SEARCH_API_KEY) {
+    if (!searchApiKey) {
       fetchApiKey();
     }
-  }, [config.ALGOLIA_SEARCH_API_KEY]);
+  }, [searchApiKey]);
 
   return searchApiKey;
 }
