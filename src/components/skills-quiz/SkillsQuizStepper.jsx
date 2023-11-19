@@ -4,7 +4,6 @@ import React, { useEffect, useState, useContext, useMemo } from 'react';
 import {
   Button, Stepper, ModalDialog, Container, Form,
 } from '@edx/paragon';
-import algoliasearch from 'algoliasearch/lite';
 import { InstantSearch, Configure } from 'react-instantsearch-dom';
 import { getConfig } from '@edx/frontend-platform/config';
 import { SearchContext, removeFromRefinementArray, deleteRefinementAction } from '@edx/frontend-enterprise-catalog-search';
@@ -25,6 +24,7 @@ import SelectJobCard from './SelectJobCard';
 import TagCloud from '../TagCloud';
 import SkillsCourses from './SkillsCourses';
 
+import { useAlgoliaSearch } from "../../utils/hooks";
 import { useDefaultSearchFilters } from '../search/data/hooks';
 import { UserSubsidyContext } from '../enterprise-user-subsidy';
 import {
@@ -42,18 +42,8 @@ const SkillsQuizStepper = () => {
   const config = getConfig();
   const { userId } = getAuthenticatedUser();
   const isFirstRender = useIsFirstRender();
-  const [searchClient, courseIndex, jobIndex] = useMemo(
-    () => {
-      const client = algoliasearch(
-        config.ALGOLIA_APP_ID,
-        config.ALGOLIA_SEARCH_API_KEY,
-      );
-      const cIndex = client.initIndex(config.ALGOLIA_INDEX_NAME);
-      const jIndex = client.initIndex(config.ALGOLIA_INDEX_NAME_JOBS);
-      return [client, cIndex, jIndex];
-    },
-    [], // only initialized once
-  );
+  const [courseIndex] = useAlgoliaSearch(config, config.ALGOLIA_INDEX_NAME);
+  const [jobSearchClient, jobIndex] = useAlgoliaSearch(config, config.ALGOLIA_INDEX_NAME_JOBS);
   const [currentStep, setCurrentStep] = useState(STEP1);
   const [isStudentChecked, setIsStudentChecked] = useState(false);
   const handleIsStudentCheckedChange = e => setIsStudentChecked(e.target.checked);
@@ -226,7 +216,7 @@ const SkillsQuizStepper = () => {
 
                           <InstantSearch
                             indexName={config.ALGOLIA_INDEX_NAME_JOBS}
-                            searchClient={searchClient}
+                            searchClient={jobSearchClient}
                           >
                             <div className="col col-8 p-0 mt-3">
                               <CurrentJobDropdown />

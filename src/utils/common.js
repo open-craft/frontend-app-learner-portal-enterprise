@@ -2,6 +2,7 @@ import moment from 'moment';
 import Cookies from 'universal-cookie';
 import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 import { getConfig } from '@edx/frontend-platform/config';
+import { logError } from '@edx/frontend-platform/logging';
 
 export const isCourseEnded = endDate => moment(endDate) < moment();
 
@@ -63,6 +64,22 @@ export const loginRefresh = async () => {
       cookies.remove(config.ACCESS_TOKEN_COOKIE_NAME);
     }
     return Promise.resolve();
+  }
+};
+
+export const fetchAlgoliaSecuredApiKey = async () => {
+  const config = getConfig();
+  const httpClient = getAuthenticatedHttpClient();
+
+  try {
+    const response = await httpClient.get(config.ALGOLIA_SECURED_KEY_ENDPOINT);
+    if (response && response.data) {
+      return response.data.key;
+    }
+    throw new Error('Response does not contain data');
+  } catch (error) {
+    logError(error);
+    return null;
   }
 };
 
