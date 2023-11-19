@@ -17,7 +17,7 @@ export default function EnterprisePage({ children, useEnterpriseConfigCache }) {
   const { enterpriseSlug } = useParams();
   const [enterpriseConfig, fetchError] = useEnterpriseCustomerConfig(enterpriseSlug, useEnterpriseConfigCache);
   const config = getConfig();
-  const [searchClient, searchIndex] = useAlgoliaSearch(config);
+  const [searchClient, searchIndex] = useAlgoliaSearch(config, config.ALGOLIA_INDEX_NAME);
   const user = getAuthenticatedUser();
   const { profileImage } = user;
 
