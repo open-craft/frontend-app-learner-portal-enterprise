@@ -1,5 +1,5 @@
 import React, {
-  useContext, useMemo, useEffect,
+  useContext, useEffect,
 } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
@@ -9,7 +9,6 @@ import { getConfig } from '@edx/frontend-platform/config';
 import { SearchHeader, SearchContext } from '@edx/frontend-enterprise-catalog-search';
 import { useToggle, Stack } from '@edx/paragon';
 
-import algoliasearch from 'algoliasearch/lite';
 import { useDefaultSearchFilters, useSearchCatalogs } from './data/hooks';
 import {
   NUM_RESULTS_PER_PAGE,
@@ -36,6 +35,7 @@ import SearchPathwayCard from '../pathway/SearchPathwayCard';
 import { SubsidyRequestsContext } from '../enterprise-subsidy-requests';
 import PathwayModal from '../pathway/PathwayModal';
 import { useEnterpriseCuration } from './content-highlights/data';
+import { useAlgoliaSearch } from '../../utils/hooks';
 
 const Search = () => {
   const { pathwayUUID } = useParams();
@@ -78,17 +78,7 @@ const Search = () => {
   }, [openLearnerPathwayModal, pathwayUUID]);
 
   const config = getConfig();
-  const courseIndex = useMemo(
-    () => {
-      const client = algoliasearch(
-        config.ALGOLIA_APP_ID,
-        config.ALGOLIA_SEARCH_API_KEY,
-      );
-      const cIndex = client.initIndex(config.ALGOLIA_INDEX_NAME);
-      return cIndex;
-    },
-    [config.ALGOLIA_APP_ID, config.ALGOLIA_INDEX_NAME, config.ALGOLIA_SEARCH_API_KEY],
-  );
+  const [, courseIndex] = useAlgoliaSearch(config, config.ALGOLIA_INDEX_NAME);
 
   const PAGE_TITLE = `${HEADER_TITLE} - ${enterpriseConfig.name}`;
   const shouldDisplayBalanceAlert = hasNoEnterpriseOffersBalance || hasLowEnterpriseOffersBalance;
