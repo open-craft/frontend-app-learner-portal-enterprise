@@ -299,9 +299,9 @@ export const useCourseEnrollmentUrl = ({
     () => ({
       next: `${config.LMS_BASE_URL}/courses/${courseRunKey}/course`,
       // Redirect back to the same page with a failure query param
-      failure_url: `${global.location.origin}${location.pathname}?${baseQueryParams.toString()}`,
+      failure_url: `${global.location.origin}${global.location.pathname}?${baseQueryParams.toString()}`,
     }),
-    [config.LMS_BASE_URL, courseRunKey, baseQueryParams, location.pathname],
+    [config.LMS_BASE_URL, courseRunKey, baseQueryParams],
   );
 
   const enrollmentUrl = useMemo(
