@@ -793,7 +793,7 @@ export const createEnrollFailureUrl = ({ courseRunKey, location }) => {
   baseQueryParams.set(ENROLLMENT_FAILED_QUERY_PARAM, true);
   baseQueryParams.set(ENROLLMENT_COURSE_RUN_KEY_QUERY_PARAM, courseRunKey);
 
-  return `${global.location.origin}${location.pathname}?${baseQueryParams.toString()}`;
+  return `${global.location.origin}${global.location.pathname}?${baseQueryParams.toString()}`;
 };
 
 export const createEnrollWithLicenseUrl = ({
