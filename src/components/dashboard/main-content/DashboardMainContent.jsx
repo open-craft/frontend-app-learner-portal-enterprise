@@ -42,7 +42,7 @@ const DashboardMainContent = ({ canOnlyViewHighlightSets }) => {
             </p>
             <Button
               as={Link}
-              to={`/${slug}/search`}
+              to={`/${slug}/search?showAll=1`}
               className="btn-brand-primary d-block d-md-inline-block"
             >
               Find a course

@@ -62,30 +62,12 @@ const CourseHeader = () => {
                   links={[
                     {
                       label: 'Find a Course',
-                      to: `/${enterpriseConfig.slug}/search`,
+                      to: `/${enterpriseConfig.slug}/search?showAll=1`,
                     },
                   ]}
                   activeLabel={course.title}
                   linkAs={Link}
                 />
-              </div>
-            )}
-            {partners.length > 0 && (
-              <div className="mt-4 mb-2 course-header__partner-logos">
-                {partners.map(partner => (
-                  <a
-                    href={partner.marketingUrl}
-                    key={partner.uuid}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      src={partner.logoImageUrl}
-                      alt={`${partner.name} logo`}
-                      style={{ maxWidth: 160, maxHeight: 144 }}
-                    />
-                  </a>
-                ))}
               </div>
             )}
             <div className={classNames({ 'mb-4': !course.shortDescription, 'd-flex': true, 'align-items-center': true })}>

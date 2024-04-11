@@ -15,7 +15,7 @@ const SiteHeaderNavMenu = () => {
       <NavLink to={`/${enterpriseConfig.slug}`} className={mainMenuLinkClassName} exact>
         Dashboard
       </NavLink>
-      <NavLink to={`/${enterpriseConfig.slug}/search`} className={mainMenuLinkClassName} exact>
+      <NavLink to={`/${enterpriseConfig.slug}/search?showAll=1`} className={mainMenuLinkClassName} exact>
         Find a Course
       </NavLink>
     </>

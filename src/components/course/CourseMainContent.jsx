@@ -4,8 +4,6 @@ import { AppContext } from '@edx/frontend-platform/react';
 
 import { PreviewExpand } from '../preview-expand';
 import { CourseContext } from './CourseContextProvider';
-import CourseSidebar from './CourseSidebar';
-import CreatedBy from './CreatedBy';
 import VerifiedCertPitch from './VerifiedCertPitch';
 
 function formatSponsorTextList(sponsors) {
@@ -35,17 +33,6 @@ const CourseMainContent = () => {
 
   return (
     <>
-      {/*
-        XXX: Hidden for the demo
-
-      <MediaQuery minWidth={breakpoints.large.minWidth}>
-        {matches => !matches && (
-          <div className="mb-5">
-            <CourseSidebar />
-          </div>
-        )}
-      </MediaQuery>
-      */}
       {course.fullDescription && (
         <PreviewExpand
           className="mb-5"
@@ -121,11 +108,6 @@ const CourseMainContent = () => {
         </PreviewExpand>
       )}
 
-      {/* 
-        XXX: hiding for the demo 
-
-      <CreatedBy />
-      */}
       {activeCourseRun.type === 'verified' && (
         <VerifiedCertPitch />
       )}

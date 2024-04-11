@@ -7,7 +7,6 @@ import { AppContext } from '@edx/frontend-platform/react';
 import { MainContent, Sidebar } from '../../layout';
 import CourseHeader from '../course-header/CourseHeader';
 import CourseMainContent from '../CourseMainContent';
-import CourseSidebar from '../CourseSidebar';
 import CourseRecommendations from '../CourseRecommendations';
 import { CourseContext } from '../CourseContextProvider';
 
@@ -25,7 +24,6 @@ const CourseAbout = () => {
           <MediaQuery minWidth={breakpoints.large.minWidth}>
             {matches => matches && (
               <Sidebar>
-                <CourseSidebar />
               </Sidebar>
             )}
           </MediaQuery>
