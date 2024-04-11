@@ -15,7 +15,8 @@ const AvatarDropdown = ({ showLabel }) => {
   } = getConfig();
   const { enterpriseConfig, authenticatedUser } = useContext(AppContext);
   const { username, profileImage } = authenticatedUser;
-  const enterpriseDashboardLink = `/${enterpriseConfig.slug}`;
+  // XXX Quick hack for a demo - include the directory path when deployed to a subdir of a domain
+  const enterpriseDashboardLink = global.location.pathname.split(enterpriseConfig.slug)[0] + enterpriseConfig.slug;
 
   const idpPresent = isDefinedAndNotNull(enterpriseConfig.identityProvider);
   // we insert the logout=true in this case to avoid the redirect back to IDP
@@ -31,7 +32,7 @@ const AvatarDropdown = ({ showLabel }) => {
         src={profileImage.imageUrlMedium}
         id="site-header-avatar-dropdown-toggle"
       >
-        {username}
+        My Account
       </Dropdown.Toggle>
       <Dropdown.Menu
         style={{ maxWidth: 280 }}
