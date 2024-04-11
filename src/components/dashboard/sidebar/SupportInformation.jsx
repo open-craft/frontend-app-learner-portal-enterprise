@@ -52,12 +52,17 @@ const SupportInformation = ({ className }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            edX Help Center
+            HMX Support page.
           </Hyperlink>.
         </p>
+
+        {/*
+          XXX: Hidden for the demo
+
         <p>
           To request more benefits or specific courses, {renderContactHelpText()}.
         </p>
+        */}
       </SidebarBlock>
     </>
   );
