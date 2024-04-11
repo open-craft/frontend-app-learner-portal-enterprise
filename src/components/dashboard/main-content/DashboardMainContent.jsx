@@ -49,7 +49,12 @@ const DashboardMainContent = ({ canOnlyViewHighlightSets }) => {
             </Button>
 
             <br />
+
+            {/*
+                XXX: Hidden for the demo 
+
             {canOnlyViewHighlightSets === false && <CourseRecommendations />}
+            */}
           </>
         )}
       </CourseEnrollments>
