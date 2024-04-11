@@ -35,6 +35,9 @@ const CourseMainContent = () => {
 
   return (
     <>
+      {/*
+        XXX: Hidden for the demo
+
       <MediaQuery minWidth={breakpoints.large.minWidth}>
         {matches => !matches && (
           <div className="mb-5">
@@ -42,6 +45,7 @@ const CourseMainContent = () => {
           </div>
         )}
       </MediaQuery>
+      */}
       {course.fullDescription && (
         <PreviewExpand
           className="mb-5"
@@ -116,7 +120,12 @@ const CourseMainContent = () => {
           <div dangerouslySetInnerHTML={{ __html: course.syllabusRaw }} />
         </PreviewExpand>
       )}
+
+      {/* 
+        XXX: hiding for the demo 
+
       <CreatedBy />
+      */}
       {activeCourseRun.type === 'verified' && (
         <VerifiedCertPitch />
       )}
