@@ -37,8 +37,8 @@ const DashboardMainContent = ({ canOnlyViewHighlightSets }) => {
         ) : (
           <>
             <p>
-              Getting started with edX is easy. Simply find a course from your
-              catalog, request enrollment, and get started on your learning journey.
+              Getting started is easy. Simply find a course from your
+              catalog, enroll, and get started on your learning journey.
             </p>
             <Button
               as={Link}
