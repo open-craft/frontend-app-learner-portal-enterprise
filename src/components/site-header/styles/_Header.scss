@@ -1,6 +1,6 @@
 @import './Menu.scss';
 
-$header-logo-height-desktop: 1.75rem;
+$header-logo-height-desktop: 3rem;
 $header-logo-height-mobile: 1.5rem;
 
 .site-header-mobile,
@@ -50,7 +50,7 @@ $header-logo-height-mobile: 1.5rem;
 }
 
 .site-header-desktop {
-  border-bottom: 1px solid $gray-200;
+  border-bottom: 4px solid $brand;
   background: $white;
   .nav-link {
     text-decoration: none;
@@ -58,6 +58,9 @@ $header-logo-height-mobile: 1.5rem;
   .logo,
   .vertical-divider {
     height: $header-logo-height-desktop;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0.5rem;
   }
   .main-nav {
     .nav-link {

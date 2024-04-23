@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { getConfig } from '@edx/frontend-platform/config';
@@ -14,7 +14,8 @@ const AvatarDropdown = ({ showLabel }) => {
     LEARNER_SUPPORT_URL,
   } = getConfig();
   const { enterpriseConfig, authenticatedUser } = useContext(AppContext);
-  const { username, profileImage } = authenticatedUser;
+  const { profileImage } = authenticatedUser;
+  const userFirstName = useMemo(() => authenticatedUser?.name.split(' ').shift(), [authenticatedUser]);
   const enterpriseDashboardLink = `/${enterpriseConfig.slug}`;
 
   const idpPresent = isDefinedAndNotNull(enterpriseConfig.identityProvider);
@@ -31,7 +32,7 @@ const AvatarDropdown = ({ showLabel }) => {
         src={profileImage.imageUrlMedium}
         id="site-header-avatar-dropdown-toggle"
       >
-        {username}
+        {userFirstName}
       </Dropdown.Toggle>
       <Dropdown.Menu
         style={{ maxWidth: 280 }}

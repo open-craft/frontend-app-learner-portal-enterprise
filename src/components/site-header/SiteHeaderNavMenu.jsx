@@ -11,14 +11,9 @@ const SiteHeaderNavMenu = () => {
   }
 
   return (
-    <>
-      <NavLink to={`/${enterpriseConfig.slug}`} className={mainMenuLinkClassName} exact>
-        Dashboard
-      </NavLink>
-      <NavLink to={`/${enterpriseConfig.slug}/search`} className={mainMenuLinkClassName} exact>
-        Find a Course
-      </NavLink>
-    </>
+    <NavLink to={`/${enterpriseConfig.slug}/search`} className={mainMenuLinkClassName} exact>
+      Explore
+    </NavLink>
   );
 };
 
