@@ -90,12 +90,12 @@ const DashboardPage = () => {
   return (
     <>
       <Helmet title={PAGE_TITLE} />
-      <Container size="lg">
-        <h2 className="h1 mb-4 mt-4">
-          {userFirstName ? `Welcome, ${userFirstName}!` : 'Welcome!'}
-        </h2>
+      <Container size="xl" className="d-flex flex-fill">
         <EnterpriseLearnerFirstVisitRedirect />
+        <CoursesTabComponent canOnlyViewHighlightSets={canOnlyViewHighlightSets} />
+        {/*
         <Tabs defaultActiveKey="courses" onSelect={(k) => onSelectHandler(k)}>{allTabs.filter(tab => tab)}</Tabs>
+        */}
         {enterpriseConfig.showIntegrationWarning && <IntegrationWarningModal isOpen />}
         {subscriptionPlan && showExpirationNotifications && <SubscriptionExpirationModal />}
       </Container>

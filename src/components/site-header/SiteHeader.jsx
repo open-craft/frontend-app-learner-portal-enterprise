@@ -14,7 +14,7 @@ const SiteHeader = () => {
 
   const renderDesktopHeader = () => (
     <header className="site-header-desktop">
-      <Container size="lg">
+      <Container size="xl">
         <div className="nav-container position-relative d-flex align-items-center">
           <SiteHeaderLogos />
           <nav aria-label="Secondary" className="nav secondary-menu-container align-items-center ml-auto">
