@@ -8,7 +8,6 @@ import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
 import { getConfig } from '@edx/frontend-platform/config';
 import { Hyperlink } from '@edx/paragon';
 import { EnterprisePage } from '../enterprise-page';
-import { EnterpriseBanner } from '../enterprise-banner';
 import { Layout } from '../layout';
 import LoginRefresh from './LoginRefresh';
 import { ErrorPage } from '../error-page';
@@ -48,7 +47,6 @@ const AuthenticatedPage = ({ children, useEnterpriseConfigCache }) => {
       <LoginRefresh>
         <EnterprisePage useEnterpriseConfigCache={useEnterpriseConfigCache}>
           <Layout>
-            <EnterpriseBanner />
             {children}
           </Layout>
         </EnterprisePage>
