@@ -1,0 +1,131 @@
+// font size
+$lead-font-size: 1.25rem !important;
+
+// card variables
+$card-image-vertical-max-height: 92px;
+$card-image-horizontal-max-width: 248px;
+$card-image-horizontal-min-width: 248px;
+
+// alert variables
+$alert-icon-space: 8px;
+
+// progress bar variables
+$annotated-progress-height: 8px;
+$progress-threshold-circle: 0px;
+
+// chip variables
+$chip-padding-x: 4px;
+$chip-padding-y: 2px;
+$chip-border-radius: 6px;
+
+.pgn__chip {
+  .pgn__chip__label {
+    line-height: 20px !important;
+  }
+  .pgn__icon__sm {
+    width: 14px !important;
+    height: 14px !important;
+  }
+  border: none !important;
+}
+
+.icon-chip {
+  padding: 4px 4px !important;
+  border-radius: 4px !important;
+}
+
+// button variables
+$btn-font-weight: 500;
+$btn-border-radius: 4px;
+
+// custom colors
+$harvard-dark-red: #821122;
+$brand: $harvard-dark-red;
+$harvard-red: #AD182D;
+$mortar: #8C8179;
+$indigo: #293352;
+$slate: #8996A0;
+$black: #000000 !default;
+$gray: #454545 !default;
+$dark-turquoise: #05A59D;
+$medium-gray: #E0E0E0;
+$light-gray: #F2F0EF;
+$lighter-gray: #707070;
+$ivy: #52854C;
+$theme-colors: () !default;
+$theme-colors: map-merge(
+  (
+    "brand": $brand,
+    "harvard-dark-red": $harvard-dark-red,
+    "harvard-red": $harvard-red,
+    "mortar": $mortar,
+    "indigo": $indigo,
+    "slate": $slate,
+    "dark-turquoise": $dark-turquoise,
+    "ivy": $ivy,
+    "medium-gray": $medium-gray,
+    "light-gray": $light-gray,
+    "lighter-gray": $lighter-gray,
+    "black": $black,
+  ),
+  $theme-colors
+);
+
+// checkbox variables
+$custom-control-indicator-checked-color: $black;
+$custom-control-indicator-border-color: $gray;
+$custom-control-indicator-checked-border-color: $black;
+$custom-control-indicator-checked-bg: $black;
+
+// search field variable
+$search-border-color: $lighter-gray;
+$search-border-radius: 4px;
+.pgn__searchfield {
+  border-radius: 4px;
+  .pgn__searchfield-form {
+    border-radius: 4px;
+  }
+}
+
+.border-bottom-5 {
+  border-bottom: 5px solid !important;
+}
+
+.border-top-5 {
+  border-top: 5px solid !important;
+}
+
+.border-radius-top-right {
+  border-top-right-radius: 4px;
+}
+
+.border-2 {
+  border: 2px solid !important;
+}
+
+.line-height-24px {
+  line-height: 24px !important;
+}
+
+.alert-info .alert-icon {
+  color: $indigo !important;
+}
+
+.pgn__progress-annotated {
+  padding: 2.5rem 0 0 0 !important;
+  .pgn__annotation-dark-bottom {
+    filter: none !important;
+    padding: 2px 8px 2px 8px;
+    font-size: 12px;
+    line-height: 20px;
+    background-color: $medium-gray !important;
+    color: $black;
+    &::after {
+      border-top-color: $medium-gray !important;
+    }
+  }
+}
+
+.text-decoration-underline {
+  text-decoration: underline !important;
+}

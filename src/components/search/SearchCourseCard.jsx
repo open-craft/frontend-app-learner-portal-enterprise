@@ -5,18 +5,24 @@ import { useHistory } from 'react-router-dom';
 import { AppContext } from '@edx/frontend-platform/react';
 import { getConfig } from '@edx/frontend-platform/config';
 import { camelCaseObject } from '@edx/frontend-platform/utils';
-import { Card, Truncate } from '@edx/paragon';
+import {
+  Card, Icon, Stack, Truncate,
+} from '@edx/paragon';
 import { sendEnterpriseTrackEvent } from '@edx/frontend-enterprise-utils';
+import { AccessTimeFilled, Book, Calendar } from '@edx/paragon/icons';
 
+import FullChip from './FullChip';
 import { getPrimaryPartnerLogo, isDefinedAndNotNull } from '../../utils/common';
 import { GENERAL_LENGTH_COURSE, SHORT_LENGTH_COURSE } from './data/constants';
 import { isShortCourse } from './utils';
+import { UserSubsidyContext } from '../enterprise-user-subsidy';
 
 const SearchCourseCard = ({
   key, hit, isLoading, ...rest
 }) => {
   const { enterpriseConfig: { slug, uuid } } = useContext(AppContext);
   const history = useHistory();
+  const { subscriptionPlan } = useContext(UserSubsidyContext);
 
   const eventName = useMemo(
     () => {
@@ -89,6 +95,18 @@ const SearchCourseCard = ({
     history.push(linkToCourse);
   };
 
+  const accessUntil = subscriptionPlan
+    ? new Date(subscriptionPlan.expirationDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+    : '';
+  /**
+   * TODO: Get enrollment status'
+   * Currently the user's enrollment status is fetched only in the course service
+   * and made available in the CourseService. The endpoint however fetches all the
+   * enterprise enrollments of the user. This needs to be refactored out before
+   * we can start showing the enrollment status on the search page.
+   * */
+  const enrolled = '';
+
   return (
     <Card
       data-testid="search-course-card"
@@ -97,6 +115,8 @@ const SearchCourseCard = ({
       onClick={(e) => {
         handleCardClick(e);
       }}
+      className="border-mortar border-bottom-5"
+      style={{ width: '320px', height: '380px' }}
       {...rest}
     >
       <Card.ImageCap
@@ -105,6 +125,7 @@ const SearchCourseCard = ({
         srcAlt=""
         logoSrc={primaryPartnerLogo?.src}
         logoAlt={primaryPartnerLogo?.alt}
+        className="cic-image-cap"
       />
       <Card.Header
         title={(
@@ -115,14 +136,32 @@ const SearchCourseCard = ({
             {course.partners.map(partner => partner.name).join(', ')}
           </Truncate>
         )}
+        className="line-height-24px"
+        size="sm"
       />
-      <Card.Section />
-      <Card.Footer textElement={(
-        <span className="text-muted">
-          { isShortLengthCourse ? SHORT_LENGTH_COURSE : GENERAL_LENGTH_COURSE }
-        </span>
-      )}
-      />
+      <Card.Section className="x-small pb-1">
+        <Stack direction="vertical" gap={2}>
+          {course.courseLength && (
+            <Stack direction="horizontal" gap={2}>
+              <Icon className="text-mortar" src={Calendar} /> {course.courseLength}
+            </Stack>
+          )}
+          {accessUntil && (
+            <Stack direction="horizontal" gap={2} className="">
+              <Icon className="text-mortar" src={AccessTimeFilled} /> Access Until: {accessUntil}
+            </Stack>
+          )}
+        </Stack>
+      </Card.Section>
+      <Card.Footer className="justify-content-start">
+        <FullChip accent="mortar" icon={Book} text="Course" />
+        {enrolled && (
+          <FullChip
+            accent="indigo"
+            text="ENROLLED"
+          />
+        )}
+      </Card.Footer>
     </Card>
   );
 };
