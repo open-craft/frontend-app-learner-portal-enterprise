@@ -12,6 +12,8 @@ import SupportInformation from '../sidebar/SupportInformation';
 import SubsidiesSummary from '../sidebar/SubsidiesSummary';
 import CourseRecommendations from './CourseRecommendations';
 
+import CourseSearchIcon from '../../../assets/icons/course-search-icon.svg';
+
 const DashboardMainContent = ({ canOnlyViewHighlightSets }) => {
   const {
     enterpriseConfig: {
@@ -29,29 +31,13 @@ const DashboardMainContent = ({ canOnlyViewHighlightSets }) => {
       </MediaQuery>
       <CourseEnrollments>
         {/* The children below will only be rendered if there are no course enrollments. */}
-        {disableSearch ? (
+        <div className="text-center mt-6">
+          <img src={CourseSearchIcon} alt="Search Courses Icon" />
+          <h4 className="h3 my-5">Enroll in Learning Paths or Courses</h4>
           <p>
-            You are not enrolled in any courses sponsored by {name}.
-            Reach out to your administrator for instructions on how to start learning with edX!
+            <Button as={Link} to={`/${slug}/search`} variant="primary">Explore Now</Button>
           </p>
-        ) : (
-          <>
-            <p>
-              Getting started with edX is easy. Simply find a course from your
-              catalog, request enrollment, and get started on your learning journey.
-            </p>
-            <Button
-              as={Link}
-              to={`/${slug}/search`}
-              className="btn-brand-primary d-block d-md-inline-block"
-            >
-              Find a course
-            </Button>
-
-            <br />
-            {canOnlyViewHighlightSets === false && <CourseRecommendations />}
-          </>
-        )}
+        </div>
       </CourseEnrollments>
 
       <MediaQuery maxWidth={breakpoints.medium.maxWidth}>

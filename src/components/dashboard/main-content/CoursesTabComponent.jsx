@@ -19,17 +19,7 @@ const CoursesTabComponent = ({ canOnlyViewHighlightSets }) => {
   const [isActivationAlertOpen, , closeActivationAlert] = useToggle(!!state?.activationSuccess);
   return (
     <CourseEnrollmentsContextProvider>
-      <MediaQuery minWidth={breakpoints.large.minWidth}>
-        {matches => (matches ? (
-          <Sidebar data-testid="sidebar">
-            <DashboardSidebar />
-          </Sidebar>
-        ) : null)}
-      </MediaQuery>
-      <MainContent>
-        <h2 className="h2 mb-4 mt-4 text-strong">
-          My Learning
-        </h2>
+      <>
         <Alert
           variant="success"
           show={isActivationAlertOpen}
@@ -42,7 +32,7 @@ const CoursesTabComponent = ({ canOnlyViewHighlightSets }) => {
 
         <CourseEnrollmentFailedAlert className="mt-0 mb-3" enrollmentSource={ENROLLMENT_SOURCE.DASHBOARD} />
         <DashboardMainContent canOnlyViewHighlightSets={canOnlyViewHighlightSets} />
-      </MainContent>
+      </>
     </CourseEnrollmentsContextProvider>
   );
 };
