@@ -6,9 +6,13 @@
   object-fit: cover;
   object-position: right top;
 }
+/*
+NOTE: This has been disabled because this affects other places where Radio buttons are use in colums
+
 .pgn__form-control-set{
   flex-direction: row;
 }
 .pgn__form-control-set-inline{
   align-items: unset;
 }
+*/

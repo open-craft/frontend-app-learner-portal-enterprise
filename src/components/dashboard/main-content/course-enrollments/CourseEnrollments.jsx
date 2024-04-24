@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 import { MediaQuery, Stack, breakpoints } from '@edx/paragon';
 
 import PropTypes from 'prop-types';
@@ -9,11 +9,13 @@ import { CourseEnrollmentsContext } from './CourseEnrollmentsContextProvider';
 import { sortedEnrollmentsByEnrollmentDate } from './data/utils';
 import NewCourseCard from './course-cards/NewCourseCard';
 import { MainContent, Sidebar } from '../../../layout';
+import CourseEnrollmentsFilter from './CourseEnrollmentsFilter';
+import CourseSearchIcon from '../../../../assets/icons/course-search-icon.svg';
 
 export const COURSE_SECTION_TITLES = {
-  current: 'My courses',
-  completed: 'Completed courses',
-  savedForLater: 'Saved for later',
+  current: 'In Progress',
+  completed: 'Completed',
+  savedForLater: 'Not Started',
 };
 
 const CourseEnrollments = ({ children }) => {
@@ -51,6 +53,18 @@ const CourseEnrollments = ({ children }) => {
     [courseEnrollmentsByStatus.savedForLater],
   );
 
+  const [currentGroup, setCurrentGroup] = useState(COURSE_SECTION_TITLES.current);
+  const ENROLLMENT_MAP = {
+    [COURSE_SECTION_TITLES.current]: currentCourseEnrollments,
+    [COURSE_SECTION_TITLES.completed]: completedCourseEnrollments,
+    [COURSE_SECTION_TITLES.savedForLater]: savedForLaterCourseEnrollments,
+  };
+  const NO_ENROLLMENT_MESSAGE = {
+    [COURSE_SECTION_TITLES.current]: "You don't have any course that are currently in progress.",
+    [COURSE_SECTION_TITLES.completed]: "You haven't completed any courses.",
+    [COURSE_SECTION_TITLES.savedForLater]: "You don't have any courses saved for later.",
+  };
+
   if (fetchCourseEnrollmentsError) {
     return (
       <CourseEnrollmentsAlert variant="danger">
@@ -70,7 +84,11 @@ const CourseEnrollments = ({ children }) => {
             {
               matches => (matches ? (
                 <Sidebar data-testid="sidebar">
-                  <p>Here comes the filtering</p>
+                  <CourseEnrollmentsFilter
+                    groups={Object.values(COURSE_SECTION_TITLES)}
+                    current={currentGroup}
+                    selectGroup={setCurrentGroup}
+                  />
                 </Sidebar>
               ) : null)
             }
@@ -112,7 +130,17 @@ const CourseEnrollments = ({ children }) => {
         </>
         */}
         <Stack gap={3}>
-          {currentCourseEnrollments.map(e => <NewCourseCard {...e} key={e.courseRunId} />)}
+          {
+            ENROLLMENT_MAP[currentGroup].length
+              ? ENROLLMENT_MAP[currentGroup].map(e => <NewCourseCard {...e} key={e.courseRunId} />)
+              : (
+                <div className="text-center mt-6">
+                  <img src={CourseSearchIcon} alt="Search Courses Icon" />
+                  <h4 className="h3 my-5">No Matching Results</h4>
+                  <p>{NO_ENROLLMENT_MESSAGE[currentGroup]}</p>
+                </div>
+              )
+          }
         </Stack>
       </MainContent>
     </>
