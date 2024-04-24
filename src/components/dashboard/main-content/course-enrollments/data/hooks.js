@@ -30,7 +30,14 @@ export const useCourseEnrollments = ({
     const fetchData = async () => {
       try {
         const resp = await service.fetchEnterpriseCourseEnrollments(enterpriseUUID);
-        const enrollments = camelCaseObject(resp.data).map(transformCourseEnrollment);
+        let enrollments = camelCaseObject(resp.data).map(transformCourseEnrollment);
+        // Enrich the enrollments with full course data so course details can be rendered in the UI
+        enrollments = await Promise.all(enrollments.map(async enrollment => {
+          const courseKey = enrollment.courseRunId.split(':')[1].split('+').slice(0, 2).join('+');
+          const courseService = new CourseService({ courseKey });
+          const course = await courseService.fetchCourseDetails();
+          return { ...enrollment, course: camelCaseObject(course.data) };
+        }));
         const enrollmentsByStatus = groupCourseEnrollmentsByStatus(enrollments);
         enrollmentsByStatus[COURSE_STATUSES.requested] = requestedCourseEnrollments;
         setCourseEnrollmentsByStatus(enrollmentsByStatus);

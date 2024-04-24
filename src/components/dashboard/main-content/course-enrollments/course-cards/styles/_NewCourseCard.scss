@@ -1,0 +1,27 @@
+.top-left-logo {
+    .pgn__card-logo-cap {
+      top: 17px;
+      left: 17px;
+      inset-inline-start: 1.1rem !important;
+      box-shadow: none !important;
+    }
+  }
+  
+  .compact-header {
+    .pgn__card-header-content {
+      margin-top: 0px !important;
+    }
+  }
+  
+  .border-radius-top-zero {
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+  }
+  
+  .border-radius-bottom-zero {
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    .pgn__card-image-cap {
+      border-bottom-left-radius: 0px !important;
+    }
+  }

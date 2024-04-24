@@ -91,7 +91,9 @@ const DashboardPage = () => {
     <>
       <Helmet title={PAGE_TITLE} />
       <Container size="xl" className="d-flex flex-fill">
+        {/*
         <EnterpriseLearnerFirstVisitRedirect />
+        */}
         <CoursesTabComponent canOnlyViewHighlightSets={canOnlyViewHighlightSets} />
         {/*
         <Tabs defaultActiveKey="courses" onSelect={(k) => onSelectHandler(k)}>{allTabs.filter(tab => tab)}</Tabs>

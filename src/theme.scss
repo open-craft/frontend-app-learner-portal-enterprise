@@ -18,20 +18,22 @@ $chip-padding-x: 4px;
 $chip-padding-y: 2px;
 $chip-border-radius: 6px;
 
+.tiny-icon {
+  width: 14px !important;
+  height: 14px !important;
+}
+
 .pgn__chip {
   .pgn__chip__label {
     line-height: 20px !important;
+    font-size: 0.75rem !important;
+    font-weight: 700;
   }
-  .pgn__icon__sm {
+  .pgn__icon {
     width: 14px !important;
     height: 14px !important;
   }
   border: none !important;
-}
-
-.icon-chip {
-  padding: 4px 4px !important;
-  border-radius: 4px !important;
 }
 
 // button variables

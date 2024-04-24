@@ -1,4 +1,5 @@
 import React, { useContext, useMemo } from 'react';
+import { Stack } from '@edx/paragon';
 
 import PropTypes from 'prop-types';
 import CourseSection from './CourseSection';
@@ -6,6 +7,7 @@ import CourseSection from './CourseSection';
 import CourseEnrollmentsAlert from './CourseEnrollmentsAlert';
 import { CourseEnrollmentsContext } from './CourseEnrollmentsContextProvider';
 import { sortedEnrollmentsByEnrollmentDate } from './data/utils';
+import NewCourseCard from './course-cards/NewCourseCard';
 
 export const COURSE_SECTION_TITLES = {
   current: 'My courses',
@@ -76,6 +78,7 @@ const CourseEnrollments = ({ children }) => {
           gets displayed if the user does not have any course enrollments.
       */}
       {!hasCourseEnrollments && children}
+      {/*
       <>
         <CourseSection
           title={COURSE_SECTION_TITLES.current}
@@ -90,6 +93,10 @@ const CourseEnrollments = ({ children }) => {
           courseRuns={savedForLaterCourseEnrollments}
         />
       </>
+      */}
+      <Stack gap={3}>
+        {currentCourseEnrollments.map(e => <NewCourseCard {...e} key={e.courseRunId} />)}
+      </Stack>
     </>
   );
 };
