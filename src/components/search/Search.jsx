@@ -3,11 +3,11 @@ import React, {
 } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { Configure, InstantSearch } from 'react-instantsearch-dom';
+import { Configure, InstantSearch, RefinementList } from 'react-instantsearch-dom';
 import { AppContext } from '@edx/frontend-platform/react';
 import { getConfig } from '@edx/frontend-platform/config';
-import { SearchHeader, SearchContext } from '@edx/frontend-enterprise-catalog-search';
-import { useToggle, Stack } from '@edx/paragon';
+import { SearchContext } from '@edx/frontend-enterprise-catalog-search';
+import { useToggle, Container, Stack } from '@edx/paragon';
 
 import algoliasearch from 'algoliasearch/lite';
 import { useDefaultSearchFilters, useSearchCatalogs } from './data/hooks';
@@ -28,6 +28,9 @@ import SearchProgramCard from './SearchProgramCard';
 import SearchResults from './SearchResults';
 import { ContentHighlights } from './content-highlights';
 import { features } from '../../config';
+import { Sidebar, MainContent } from '../layout';
+import SearchFilter from './SearchFilter';
+import SearchHeader from './SearchHeader';
 
 import { IntegrationWarningModal } from '../integration-warning-modal';
 import { EnterpriseOffersBalanceAlert, UserSubsidyContext } from '../enterprise-user-subsidy';
@@ -36,7 +39,7 @@ import SearchPathwayCard from '../pathway/SearchPathwayCard';
 import { SubsidyRequestsContext } from '../enterprise-subsidy-requests';
 import PathwayModal from '../pathway/PathwayModal';
 import { useEnterpriseCuration } from './content-highlights/data';
-import { useAlgoliaSearch } from "../../utils/hooks";
+import { useAlgoliaSearch } from '../../utils/hooks';
 
 const Search = () => {
   const { pathwayUUID } = useParams();
@@ -86,10 +89,10 @@ const Search = () => {
 
   const { content_type: contentType } = refinements;
   const hasRefinements = Object.keys(refinements).filter(refinement => refinement !== 'showAll').length > 0
-  && (contentType !== undefined ? contentType.length > 0 : true);
+    && (contentType !== undefined ? contentType.length > 0 : true);
 
   return (
-    <>
+    <Container size="xl" className="d-flex flex-fill">
       <Helmet title={PAGE_TITLE} />
       <InstantSearch
         indexName={config.ALGOLIA_INDEX_NAME}
@@ -103,6 +106,7 @@ const Search = () => {
             clickAnalytics
           />
         )}
+        {/*
         {canOnlyViewHighlightSets === false && (
           <div className="search-header-wrapper">
             <SearchHeader
@@ -114,40 +118,52 @@ const Search = () => {
             />
           </div>
         )}
-        <PathwayModal
-          learnerPathwayUuid={pathwayUUID}
-          isOpen={isLearnerPathwayModalOpen}
-          onClose={() => {
-            history.push(`/${enterpriseConfig.slug}/search`);
-            onClose();
-          }}
-        />
-        {canEnrollWithEnterpriseOffers && shouldDisplayBalanceAlert && (
-          <EnterpriseOffersBalanceAlert hasNoEnterpriseOffersBalance={hasNoEnterpriseOffersBalance} />
-        )}
-        {(contentType === undefined || contentType.length === 0) && (
-          <Stack className="my-5" gap={5}>
-            {!hasRefinements && <ContentHighlights />}
-            {features.ENABLE_PATHWAYS && (canOnlyViewHighlightSets === false) && <SearchPathway filter={filters} />}
-            {features.ENABLE_PROGRAMS && (canOnlyViewHighlightSets === false) && <SearchProgram filter={filters} />}
-            {canOnlyViewHighlightSets === false && <SearchCourse filter={filters} /> }
+        */}
+        <Sidebar>
+          <Stack gap={4}>
+            <h4 className="h4 my-4">Filters</h4>
+            <SearchFilter title="Subject" attribute="subject" />
+            <SearchFilter title="Duration" attribute="course_length" />
           </Stack>
-        )}
+        </Sidebar>
 
-        {contentType?.length > 0 && contentType[0] === CONTENT_TYPE_PATHWAY && (
-          <SearchResults className="py-5" hitComponent={SearchPathwayCard} title={PATHWAY_TITLE} contentType={CONTENT_TYPE_PATHWAY} />
-        )}
+        <MainContent>
+          <SearchHeader />
+          <PathwayModal
+            learnerPathwayUuid={pathwayUUID}
+            isOpen={isLearnerPathwayModalOpen}
+            onClose={() => {
+              history.push(`/${enterpriseConfig.slug}/search`);
+              onClose();
+            }}
+          />
+          {canEnrollWithEnterpriseOffers && shouldDisplayBalanceAlert && (
+            <EnterpriseOffersBalanceAlert hasNoEnterpriseOffersBalance={hasNoEnterpriseOffersBalance} />
+          )}
+          {(contentType === undefined || contentType.length === 0) && (
+            <Stack className="my-2" gap={2}>
+              {!hasRefinements && <ContentHighlights />}
+              {features.ENABLE_PATHWAYS && (canOnlyViewHighlightSets === false) && <SearchPathway filter={filters} />}
+              {features.ENABLE_PROGRAMS && (canOnlyViewHighlightSets === false) && <SearchProgram filter={filters} />}
+              {canOnlyViewHighlightSets === false && <SearchCourse filter={filters} />}
+            </Stack>
+          )}
 
-        {contentType?.length > 0 && contentType[0] === CONTENT_TYPE_PROGRAM && (
-          <SearchResults className="py-5" hitComponent={SearchProgramCard} title={PROGRAM_TITLE} contentType={CONTENT_TYPE_PROGRAM} />
-        )}
+          {contentType?.length > 0 && contentType[0] === CONTENT_TYPE_PATHWAY && (
+            <SearchResults className="py-5" hitComponent={SearchPathwayCard} title={PATHWAY_TITLE} contentType={CONTENT_TYPE_PATHWAY} />
+          )}
 
-        {contentType?.length > 0 && contentType[0] === CONTENT_TYPE_COURSE && (
-          <SearchResults className="py-5" hitComponent={SearchCourseCard} title={COURSE_TITLE} contentType={CONTENT_TYPE_COURSE} />
-        )}
+          {contentType?.length > 0 && contentType[0] === CONTENT_TYPE_PROGRAM && (
+            <SearchResults className="py-5" hitComponent={SearchProgramCard} title={PROGRAM_TITLE} contentType={CONTENT_TYPE_PROGRAM} />
+          )}
+
+          {contentType?.length > 0 && contentType[0] === CONTENT_TYPE_COURSE && (
+            <SearchResults className="py-5" hitComponent={SearchCourseCard} title={COURSE_TITLE} contentType={CONTENT_TYPE_COURSE} />
+          )}
+        </MainContent>
       </InstantSearch>
       <IntegrationWarningModal isOpen={enterpriseConfig.showIntegrationWarning} />
-    </>
+    </Container>
   );
 };
 

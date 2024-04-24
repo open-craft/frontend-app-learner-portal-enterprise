@@ -47,7 +47,7 @@ export const CARDGRID_COLUMN_SIZES = {
   xs: 12,
   md: 6,
   lg: 4,
-  xl: 3,
+  xl: 4,
 };
 
 export { SEARCH_FACET_FILTERS };

@@ -89,18 +89,25 @@ const SearchResults = ({
   return (
     <Container size="lg" className={classNames('search-results', className)}>
       <div className="d-flex align-items-center mb-2">
+        {/*
         <h2 className="flex-grow-1 mb-2">
           {isSearchStalled && (
             <Skeleton className="h2 d-block mb-3" width={240} />
           )}
           {!isSearchStalled && nbHits > 0 && resultsHeading}
         </h2>
+        */}
         {(!isSearchStalled && nbHits > 0) && (contentType !== undefined) && (
           <SearchPagination
             defaultRefinement={page}
             maxPagesDisplayed={5}
           />
         )}
+        {/*
+
+        TODO: This adds the content_type=xxxx to the URL and loads the pagination buttons
+        Evaluate if this type of filtering would be needed at all
+
         {(!isSearchStalled && nbHits > 0) && (contentType === undefined) && (
           <button
             onClick={clickHandler}
@@ -110,6 +117,7 @@ const SearchResults = ({
             {linkText}
           </button>
         )}
+        */}
       </div>
       {isSearchStalled && (
         <>

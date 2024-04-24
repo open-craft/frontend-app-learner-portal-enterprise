@@ -131,3 +131,33 @@ $search-border-radius: 4px;
 .text-decoration-underline {
   text-decoration: underline !important;
 }
+
+.ais-SearchBox {
+  @extend .pgn__searchfield;
+}
+
+.ais-SearchBox-form {
+  @extend .pgn__searchfield-form;
+  display: flex;
+}
+
+.ais-SearchBox-input {
+  @extend .form-control;
+}
+
+.ais-SearchBox-submit, .ais-SearchBox-reset {
+  @extend .btn-icon;
+  @extend .btn-icon-primary;
+  @extend .btn-icon-sm;
+  @extend .pgn__searchfield__iconbutton-submit !optional;
+  &:hover, &:focus, &:active {
+    background-color: transparent !important;
+    border: 0;
+    box-shadow: 0;
+  }
+}
+.ais-SearchBox-submitIcon, .ais-SearchBox-resetIcon, .ais-SearchBox-loadingIndicator {
+  @extend .pgn__icon;
+  @extend .btn-icon__icon;
+  margin: 10px;
+}
