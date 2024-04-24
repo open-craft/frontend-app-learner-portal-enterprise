@@ -9,6 +9,7 @@ import {
 } from '@edx/paragon';
 import { Link } from 'react-router-dom';
 import { AppContext } from '@edx/frontend-platform/react';
+import { School } from '@edx/paragon/icons';
 
 import { CourseContext } from '../CourseContextProvider';
 import CourseSkills from '../CourseSkills';
@@ -27,6 +28,7 @@ import CourseReview from '../CourseReview';
 import CoursePreview from './CoursePreview';
 import { UserSubsidyContext } from '../../enterprise-user-subsidy';
 import { features } from '../../../config';
+import FullChip from '../../search/FullChip';
 
 const CourseHeader = () => {
   const { enterpriseConfig } = useContext(AppContext);
@@ -50,18 +52,18 @@ const CourseHeader = () => {
   );
 
   return (
-    <div className="course-header">
+    <div className="course-header bg-white">
       <LicenseRequestedAlert catalogList={catalog.catalogList} />
       <CourseEnrollmentFailedAlert enrollmentSource={ENROLLMENT_SOURCE.COURSE_PAGE} />
       <Container size="lg">
-        <Row className="py-4">
+        <Row>
           <Col xs={12} lg={7}>
             {!enterpriseConfig.disableSearch && (
-              <div className="small">
+              <div className="small mt-4">
                 <Breadcrumb
                   links={[
                     {
-                      label: 'Find a Course',
+                      label: 'Explore',
                       to: `/${enterpriseConfig.slug}/search`,
                     },
                   ]}
@@ -70,24 +72,7 @@ const CourseHeader = () => {
                 />
               </div>
             )}
-            {partners.length > 0 && (
-              <div className="mt-4 mb-2 course-header__partner-logos">
-                {partners.map(partner => (
-                  <a
-                    href={partner.marketingUrl}
-                    key={partner.uuid}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      src={partner.logoImageUrl}
-                      alt={`${partner.name} logo`}
-                      style={{ maxWidth: 160, maxHeight: 144 }}
-                    />
-                  </a>
-                ))}
-              </div>
-            )}
+            <FullChip icon={School} accent="mortar" text="COURSE" className="mt-6 mb-3" />
             <div className={classNames({ 'mb-4': !course.shortDescription, 'd-flex': true, 'align-items-center': true })}>
               <h2>{course.title}</h2>
               {(features.FEATURE_ENABLE_TOP_DOWN_ASSIGNMENT && isCourseAssigned) && <Badge variant="info" className="ml-4">Assigned</Badge>}
@@ -108,10 +93,11 @@ const CourseHeader = () => {
               </>
             )}
           </Col>
-          <Col xs={12} lg={{ span: 4, offset: 1 }} className="mt-3 mt-lg-0">
+          <Col xs={12} lg={{ span: 5 }} className="mt-3 mt-lg-0 pr-0">
             <CoursePreview
               previewImage={course?.image?.src || course?.video?.image}
               previewVideoURL={course?.video?.src}
+              partnerLogoUrl={partners.length ? partners[0].logoImageUrl : null}
             />
           </Col>
           <Col xs={12} lg={12}>

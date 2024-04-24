@@ -210,8 +210,10 @@ const CourseRunCard = ({
     <Card>
       <Card.Section>
         <div className="text-center">
+          {/*
           <div className="h4 mb-0">{heading}</div>
           <p className="small">{subHeading}</p>
+        */}
         </div>
         {!courseRunArchived && (
           <EnrollAction
