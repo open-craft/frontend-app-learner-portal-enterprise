@@ -133,13 +133,13 @@ const CourseEnrollments = ({ children }) => {
           {
             ENROLLMENT_MAP[currentGroup].length
               ? ENROLLMENT_MAP[currentGroup].map(e => <NewCourseCard {...e} key={e.courseRunId} />)
-              : (
+              : (hasCourseEnrollments && (
                 <div className="text-center mt-6">
                   <img src={CourseSearchIcon} alt="Search Courses Icon" />
                   <h4 className="h3 my-5">No Matching Results</h4>
                   <p>{NO_ENROLLMENT_MESSAGE[currentGroup]}</p>
                 </div>
-              )
+              ))
           }
         </Stack>
       </MainContent>
