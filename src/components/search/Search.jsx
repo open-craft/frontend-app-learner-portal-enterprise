@@ -29,7 +29,7 @@ import SearchResults from './SearchResults';
 import { ContentHighlights } from './content-highlights';
 import { features } from '../../config';
 import { Sidebar, MainContent } from '../layout';
-import SearchFilter from './SearchFilter';
+import SearchSidebar from './SearchSidebar';
 import SearchHeader from './SearchHeader';
 
 import { IntegrationWarningModal } from '../integration-warning-modal';
@@ -120,13 +120,8 @@ const Search = () => {
         )}
         */}
         <Sidebar>
-          <Stack gap={4}>
-            <h4 className="h4 my-4">Filters</h4>
-            <SearchFilter title="Subject" attribute="subject" />
-            <SearchFilter title="Duration" attribute="course_length" />
-          </Stack>
+          <SearchSidebar />
         </Sidebar>
-
         <MainContent>
           <SearchHeader />
           <PathwayModal
