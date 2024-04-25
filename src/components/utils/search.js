@@ -65,7 +65,8 @@ export const getNoResultsMessage = (title) => {
   const lowerCaseTitle = title.toLowerCase();
   return {
     messageTitle: `No ${lowerCaseTitle} were found to match your search results.`,
-    messageContent: `Check out some popular ${lowerCaseTitle} below.`,
+    messageContent: 'Try clearing the search term or the filters.',
+    // messageContent: `Check out some popular ${lowerCaseTitle} below.`,
   };
 };
 
