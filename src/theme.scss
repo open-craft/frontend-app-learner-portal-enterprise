@@ -152,8 +152,8 @@ $search-border-radius: 4px;
   @extend .pgn__searchfield__iconbutton-submit !optional;
   &:hover, &:focus, &:active {
     background-color: transparent !important;
-    border: 0;
-    box-shadow: 0;
+    border: 0 !important;
+    box-shadow: 0 !important;
   }
 }
 .ais-SearchBox-submitIcon, .ais-SearchBox-resetIcon, .ais-SearchBox-loadingIndicator {
