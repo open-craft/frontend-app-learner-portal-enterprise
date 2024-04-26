@@ -17,7 +17,7 @@ import { useEnterpriseCuration } from '../search/content-highlights/data';
 import { useLearnerProgramsListData } from '../program-progress/data/hooks';
 import { useInProgressPathwaysData } from '../pathway-progress/data/hooks';
 import CoursesTabComponent from './main-content/CoursesTabComponent';
-import { MyCareerTab } from '../my-career';
+// import { MyCareerTab } from '../my-career';
 import EnterpriseLearnerFirstVisitRedirect from '../enterprise-redirects/EnterpriseLearnerFirstVisitRedirect';
 import { UserSubsidyContext } from '../enterprise-user-subsidy';
 import { IntegrationWarningModal } from '../integration-warning-modal';
@@ -80,11 +80,11 @@ const DashboardPage = () => {
         />
       </Tab>
     ),
-    features.FEATURE_ENABLE_MY_CAREER && (
-      <Tab eventKey="my-career" title="My Career">
-        <MyCareerTab />
-      </Tab>
-    ),
+    // features.FEATURE_ENABLE_MY_CAREER && (
+    //   <Tab eventKey="my-career" title="My Career">
+    //     <MyCareerTab />
+    //   </Tab>
+    // ),
   ];
 
   return (

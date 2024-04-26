@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { PlayCircleFilled } from '@edx/paragon/icons';
+// import { PlayCircleFilled } from '@edx/paragon/icons';
 import { useToggle, Image } from '@edx/paragon';
-import { VideoPlayer } from '../../video';
+// import { VideoPlayer } from '../../video';
 
 const CoursePreview = ({ previewImage, previewVideoURL, partnerLogoUrl }) => {
-  const [isVideoPlaying, playVideo] = useToggle(false);
+  // const [isVideoPlaying, playVideo] = useToggle(false);
   const logoStyle = {
     position: 'absolute',
     top: '2rem',
@@ -21,7 +21,7 @@ const CoursePreview = ({ previewImage, previewVideoURL, partnerLogoUrl }) => {
 
   return (
     <div className="course-preview-wrapper d-flex" style={{ justifyContent: 'center', overflow: 'hidden', height: '100%' }}>
-      {previewVideoURL ? (
+      {/*previewVideoURL ? (
         <div className="video-component">
           {isVideoPlaying ? (
             <div className="video-wrapper">
@@ -43,7 +43,8 @@ const CoursePreview = ({ previewImage, previewVideoURL, partnerLogoUrl }) => {
         </div>
       ) : (
         <Image src={previewImage} alt="Course Preview Image" className="flex-shrink-0" />
-      )}
+      )*/}
+      <Image src={previewImage} alt="Course Preview Image" className="flex-shrink-0" />
       {partnerLogoUrl && (
         <Image src={partnerLogoUrl} alt="Logo" style={logoStyle} />
       )}
