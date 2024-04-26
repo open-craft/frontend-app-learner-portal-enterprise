@@ -108,7 +108,7 @@ const NewCourseCard = ({
     );
   };
 
-  let cardClass = '';
+  let cardClass = `border-${accent} border-top-5 border-radius-top`;
   if (infoAlert) {
     cardClass += ' border-radius-bottom-zero';
   }
@@ -119,7 +119,7 @@ const NewCourseCard = ({
       <Card
         orientation={orientation}
         className={cardClass}
-        style={{maxHeight: '230px'}}
+        style={{ maxHeight: orientation === 'horizontal' ? '230px' : '' }}
       >
         <Card.ImageCap
           src={course.cardImageUrl || course.image?.url}
@@ -128,9 +128,7 @@ const NewCourseCard = ({
           logoAlt={orgName}
           className="cic-image-cap top-left-logo"
         />
-        <Card.Body
-          className={`border-${accent} border-top-5 border-radius-top-right`}
-        >
+        <Card.Body>
           <div className="my-3 mx-3 d-flex">
             <IconChip accent={accent} icon={cardTypeIcon} text={cardType} />
             {renderProgressChip()}
