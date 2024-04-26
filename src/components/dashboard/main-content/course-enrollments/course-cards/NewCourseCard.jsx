@@ -56,21 +56,25 @@ const NewCourseCard = ({
   const accent = 'mortar';
   const cardType = 'COURSE';
   const cardTypeIcon = Book;
-  let duration = dayjs(endDate).diff(startDate, 'M');
-  let durationStr = 'Months';
-  if (duration < 1) {
-    duration = dayjs(endDate).diff(startDate, 'w');
-    durationStr = 'Weeks';
-  }
-  if (duration < 1) {
-    duration = dayjs(endDate).diff(startDate, 'd');
-    durationStr = 'Days';
-  }
 
-  let cardSubTitle = orgName;
-  if (duration) {
-    cardSubTitle = `${orgName}${SPACER}${SPACER}•${SPACER}${SPACER}${duration} ${durationStr}`;
-  }
+  // NOTE: The Figma design involves showing the course duration in the subtitle.
+  // Since the courses are open for multiple years in some cases, this shows strange
+  // values like 76months. So, it is hidden for now.
+  //
+  // let duration = dayjs(endDate).diff(startDate, 'M');
+  // let durationStr = 'Months';
+  // if (duration < 1) {
+  //   duration = dayjs(endDate).diff(startDate, 'w');
+  //   durationStr = 'Weeks';
+  // }
+  // if (duration < 1) {
+  //   duration = dayjs(endDate).diff(startDate, 'd');
+  //   durationStr = 'Days';
+  // }
+  // let cardSubTitle = orgName;
+  // if (duration) {
+  //   cardSubTitle = `${orgName}${SPACER}${SPACER}•${SPACER}${SPACER}${duration} ${durationStr}`;
+  // }
 
   const renderProgressChip = () => {
     const { icon, accent: chipAccent } = PROGRESS_PROPS_BY_STATUS[courseRunStatus];
@@ -135,7 +139,7 @@ const NewCourseCard = ({
           </div>
           <Card.Header
             title={title}
-            subtitle={cardSubTitle}
+            subtitle={orgName}
             className="compact-header"
           />
           {progress && (
