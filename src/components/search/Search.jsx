@@ -119,10 +119,12 @@ const Search = () => {
           </div>
         )}
         */}
+        {/*
         <Sidebar>
           <SearchSidebar />
         </Sidebar>
-        <MainContent>
+        */}
+        <MainContent className="col-lg-12">
           <SearchHeader />
           <PathwayModal
             learnerPathwayUuid={pathwayUUID}

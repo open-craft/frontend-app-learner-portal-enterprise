@@ -77,7 +77,7 @@ const CourseEnrollments = ({ children }) => {
 
   return (
     <>
-      {
+      {/*
         hasCourseEnrollments
         && (
           <MediaQuery minWidth={breakpoints.large.minWidth}>
@@ -94,8 +94,8 @@ const CourseEnrollments = ({ children }) => {
             }
           </MediaQuery>
         )
-      }
-      <MainContent className={!hasCourseEnrollments && 'col-lg-12'}>
+      */}
+      <MainContent className="col-lg-12">
         <h2 className="h2 mb-4 mt-4 text-strong">My Learning</h2>
         {showMarkCourseCompleteSuccess && (
           <CourseEnrollmentsAlert variant="success" onClose={() => setShowMarkCourseCompleteSuccess(false)}>
