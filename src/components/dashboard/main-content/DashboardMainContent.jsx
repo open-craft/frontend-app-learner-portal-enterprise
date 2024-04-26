@@ -40,9 +40,11 @@ const DashboardMainContent = ({ canOnlyViewHighlightSets }) => {
         </div>
       </CourseEnrollments>
 
+      {/*
       <MediaQuery maxWidth={breakpoints.medium.maxWidth}>
         {matches => (matches ? <SupportInformation className="mt-5" /> : null)}
       </MediaQuery>
+      */}
     </>
   );
 };
