@@ -24,11 +24,13 @@ const DashboardMainContent = ({ canOnlyViewHighlightSets }) => {
   } = useContext(AppContext);
   return (
     <>
+      {/*
       <MediaQuery maxWidth={breakpoints.medium.maxWidth}>
         {matches => (matches ? (
           <SubsidiesSummary />
         ) : null)}
       </MediaQuery>
+      */}
       <CourseEnrollments>
         {/* The children below will only be rendered if there are no course enrollments. */}
         <div className="text-center mt-6">

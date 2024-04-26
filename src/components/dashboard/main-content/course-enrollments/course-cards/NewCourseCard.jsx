@@ -1,5 +1,5 @@
 import {
-  Alert, Button, Card, Icon, ProgressBar,
+  Alert, Button, Card, Icon, ProgressBar, useMediaQuery, breakpoints,
 } from '@edx/paragon';
 import {
   AccessTime,
@@ -112,12 +112,14 @@ const NewCourseCard = ({
   if (infoAlert) {
     cardClass += ' border-radius-bottom-zero';
   }
+  const orientation = useMediaQuery({ maxWidth: breakpoints.medium.maxWidth }) ? 'vertical' : 'horizontal';
 
   return (
     <>
       <Card
-        orientation="horizontal"
+        orientation={orientation}
         className={cardClass}
+        style={{maxHeight: '230px'}}
       >
         <Card.ImageCap
           src={course.cardImageUrl || course.image?.url}

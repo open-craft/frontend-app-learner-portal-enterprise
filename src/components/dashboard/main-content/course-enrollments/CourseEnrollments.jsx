@@ -129,7 +129,7 @@ const CourseEnrollments = ({ children }) => {
           />
         </>
         */}
-        <Stack gap={3}>
+        <Stack gap={3} className="mb-5">
           {
             ENROLLMENT_MAP[currentGroup].length
               ? ENROLLMENT_MAP[currentGroup].map(e => <NewCourseCard {...e} key={e.courseRunId} />)

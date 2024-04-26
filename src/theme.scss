@@ -161,3 +161,13 @@ $search-border-radius: 4px;
   @extend .btn-icon__icon;
   margin: 10px;
 }
+
+/*
+ * This is fix to avoid the horizontal cards from growing too big when a long portrait image is used.
+ * Set the max height of the card for this to work.
+ */
+.pgn__card-wrapper-image-cap.horizontal {
+  .pgn__card-image-cap {
+    width: 100% !important;
+  }
+}
