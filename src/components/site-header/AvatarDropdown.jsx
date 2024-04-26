@@ -32,7 +32,7 @@ const AvatarDropdown = ({ showLabel }) => {
         src={profileImage.imageUrlMedium}
         id="site-header-avatar-dropdown-toggle"
       >
-        {userFirstName}
+        My Account
       </Dropdown.Toggle>
       <Dropdown.Menu
         style={{ maxWidth: 280 }}

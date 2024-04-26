@@ -12,7 +12,7 @@ const SiteHeaderNavMenu = () => {
 
   return (
     <NavLink to={`/${enterpriseConfig.slug}/search`} className={mainMenuLinkClassName} exact>
-      Explore
+      Course Finder
     </NavLink>
   );
 };
