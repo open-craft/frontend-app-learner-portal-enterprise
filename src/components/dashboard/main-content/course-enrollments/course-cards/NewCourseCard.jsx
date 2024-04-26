@@ -112,7 +112,7 @@ const NewCourseCard = ({
     );
   };
 
-  let cardClass = `border-${accent} border-top-5 border-radius-top`;
+  let cardClass = '';
   if (infoAlert) {
     cardClass += ' border-radius-bottom-zero';
   }
@@ -132,7 +132,7 @@ const NewCourseCard = ({
           logoAlt={orgName}
           className="cic-image-cap top-left-logo"
         />
-        <Card.Body>
+        <Card.Body className={`accented-body border-${accent}`}>
           <div className="my-3 mx-3 d-flex">
             <IconChip accent={accent} icon={cardTypeIcon} text={cardType} />
             {renderProgressChip()}
