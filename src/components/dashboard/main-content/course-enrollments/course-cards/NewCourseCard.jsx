@@ -116,7 +116,7 @@ const NewCourseCard = ({
   if (infoAlert) {
     cardClass += ' border-radius-bottom-zero';
   }
-  const orientation = useMediaQuery({ maxWidth: breakpoints.medium.maxWidth }) ? 'vertical' : 'horizontal';
+  const orientation = useMediaQuery({ maxWidth: breakpoints.medium.minWidth }) ? 'vertical' : 'horizontal';
 
   return (
     <>
