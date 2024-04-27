@@ -10,20 +10,22 @@ const SearchHeader = ({ searchResults }) => {
     <Navbar expand="lg">
       <div>
         <Navbar.Brand as="h1">
-          Explore
-
+          Course Finder
         </Navbar.Brand>
         {/*
             TODO: find the right way to implement this
         <small className="ml-3">Showing {nbHits} of {totalItems}</small>
         */}
       </div>
+      {/* NOTE: Hiding it temporarily. Enable this to have search in the header. */}
+      {/*
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <div className="ml-auto">
           <SearchBox autoFocus searchAsYouType={false} showLoadingIndicator />
         </div>
       </Navbar.Collapse>
+      */}
     </Navbar>
 
   );

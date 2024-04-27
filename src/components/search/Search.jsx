@@ -124,7 +124,7 @@ const Search = () => {
           <SearchSidebar />
         </Sidebar>
         */}
-        <MainContent className="col-lg-12">
+        <MainContent className="col-lg-12 pt-4">
           <SearchHeader />
           <PathwayModal
             learnerPathwayUuid={pathwayUUID}
