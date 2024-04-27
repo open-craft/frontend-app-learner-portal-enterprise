@@ -62,7 +62,7 @@ const CourseHeader = () => {
               <Breadcrumb
                 links={[
                   {
-                    label: 'Explore',
+                    label: 'Course Finder',
                     to: `/${enterpriseConfig.slug}/search`,
                   },
                 ]}
