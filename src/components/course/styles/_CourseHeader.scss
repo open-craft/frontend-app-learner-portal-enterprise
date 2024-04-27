@@ -65,4 +65,35 @@
       height: 100%;
     }
   }
+
+  .course-preview-wrapper {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    height: 100%;
+    max-height: 460px;
+
+    @include media-breakpoint-down(sm) {
+      max-height: calc(100vw - 1.5rem);
+    }
+
+    .course-preview-image {
+      object-fit: cover;
+      flext-shrink: 0;
+      width: 100%;
+    }
+
+    .course-partner-logo {
+      position: absolute;
+      top: 2rem;
+      left: 2rem;
+      border-radius: 0.25rem;
+      max-height: 100px;
+      max-width: 192px;
+      box-shadow: '0px 1px 4px 0px #00000026';
+      padding: 0.5rem;
+      box-sizing: border-box;
+      background-color: white;
+    }
+  }
 }

@@ -6,21 +6,8 @@ import { useToggle, Image } from '@edx/paragon';
 
 const CoursePreview = ({ previewImage, previewVideoURL, partnerLogoUrl }) => {
   // const [isVideoPlaying, playVideo] = useToggle(false);
-  const logoStyle = {
-    position: 'absolute',
-    top: '2rem',
-    right: '2rem',
-    borderRadius: '0.25rem',
-    maxHeight: '100px',
-    maxWidth: '192px',
-    boxShadow: '0px 1px 4px 0px #00000026',
-    padding: '0.5rem',
-    boxSizing: 'border-box',
-    backgroundColor: 'white',
-  };
-
   return (
-    <div className="course-preview-wrapper d-flex" style={{ justifyContent: 'center', overflow: 'hidden', height: '100%' }}>
+    <div className="course-preview-wrapper">
       {/*previewVideoURL ? (
         <div className="video-component">
           {isVideoPlaying ? (
@@ -44,9 +31,9 @@ const CoursePreview = ({ previewImage, previewVideoURL, partnerLogoUrl }) => {
       ) : (
         <Image src={previewImage} alt="Course Preview Image" className="flex-shrink-0" />
       )*/}
-      <Image src={previewImage} alt="Course Preview Image" className="flex-shrink-0" />
+      <Image src={previewImage} alt="Course Preview Image" className="course-preview-image" />
       {partnerLogoUrl && (
-        <Image src={partnerLogoUrl} alt="Logo" style={logoStyle} />
+        <Image src={partnerLogoUrl} alt="Logo" className="course-partner-logo" />
       )}
     </div>
   );

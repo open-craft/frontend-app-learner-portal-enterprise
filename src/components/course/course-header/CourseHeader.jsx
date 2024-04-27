@@ -52,27 +52,38 @@ const CourseHeader = () => {
   );
 
   return (
-    <div className="course-header bg-white">
+    <div className="course-header">
       <LicenseRequestedAlert catalogList={catalog.catalogList} />
       <CourseEnrollmentFailedAlert enrollmentSource={ENROLLMENT_SOURCE.COURSE_PAGE} />
       <Container size="lg">
         <Row>
-          <Col xs={12} lg={7}>
-            {!enterpriseConfig.disableSearch && (
-              <div className="small mt-4">
-                <Breadcrumb
-                  links={[
-                    {
-                      label: 'Explore',
-                      to: `/${enterpriseConfig.slug}/search`,
-                    },
-                  ]}
-                  activeLabel={course.title}
-                  linkAs={Link}
-                />
-              </div>
-            )}
-            <FullChip icon={School} accent="mortar" text="COURSE" className="mt-6 mb-3" />
+          {!enterpriseConfig.disableSearch && (
+            <div className="small mt-4 col-12">
+              <Breadcrumb
+                links={[
+                  {
+                    label: 'Explore',
+                    to: `/${enterpriseConfig.slug}/search`,
+                  },
+                ]}
+                activeLabel={course.title}
+                linkAs={Link}
+              />
+            </div>
+          )}
+        </Row>
+        <Row>
+          <Col xs={12} md={{ span: 5 }} className="my-3 mt-lg-0">
+            <CoursePreview
+              previewImage={course?.image?.src || course?.video?.image}
+              previewVideoURL={course?.video?.src}
+              partnerLogoUrl={partners.length ? partners[0].logoImageUrl : null}
+            />
+          </Col>
+          <Col xs={12} md={7} className="d-flex flex-column justify-content-center">
+            <div className="my-4">
+              <FullChip icon={School} accent="mortar" text="COURSE" />
+            </div>
             <div className={classNames({ 'mb-4': !course.shortDescription, 'd-flex': true, 'align-items-center': true })}>
               <h2>{course.title}</h2>
               {(features.FEATURE_ENABLE_TOP_DOWN_ASSIGNMENT && isCourseAssigned) && <Badge variant="info" className="ml-4">Assigned</Badge>}
@@ -93,13 +104,9 @@ const CourseHeader = () => {
               </>
             )}
           </Col>
-          <Col xs={12} lg={{ span: 5 }} className="mt-3 mt-lg-0 pr-0">
-            <CoursePreview
-              previewImage={course?.image?.src || course?.video?.image}
-              previewVideoURL={course?.video?.src}
-              partnerLogoUrl={partners.length ? partners[0].logoImageUrl : null}
-            />
-          </Col>
+        </Row>
+        {/*
+        <Row>
           <Col xs={12} lg={12}>
             {catalog.containsContentItems ? (
               <>
@@ -117,6 +124,7 @@ const CourseHeader = () => {
             )}
           </Col>
         </Row>
+        */}
       </Container>
     </div>
   );
