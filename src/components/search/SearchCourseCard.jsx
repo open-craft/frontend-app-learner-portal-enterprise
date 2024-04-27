@@ -1,12 +1,13 @@
 import React, { useContext, useMemo } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import cardFallbackImg from '@edx/brand/paragon/images/card-imagecap-fallback.png';
 import { useHistory } from 'react-router-dom';
 import { AppContext } from '@edx/frontend-platform/react';
 import { getConfig } from '@edx/frontend-platform/config';
 import { camelCaseObject } from '@edx/frontend-platform/utils';
 import {
-  Card, Icon, Stack, Truncate,
+  Button, Card, Icon, Stack, Truncate,
 } from '@edx/paragon';
 import { sendEnterpriseTrackEvent } from '@edx/frontend-enterprise-utils';
 import { AccessTimeFilled, Book, Calendar } from '@edx/paragon/icons';
@@ -129,7 +130,11 @@ const SearchCourseCard = ({
       />
       <Card.Header
         title={(
-          <Truncate maxLine={3}>{course.title}</Truncate>
+          <>
+            <FullChip accent="mortar" icon={Book} text="Course" className="mb-3" />
+            {enrolled && (<FullChip accent="indigo" text="ENROLLED" />)}
+            <Truncate maxLine={1}>{course.title}</Truncate>
+          </>
         )}
         subtitle={course.partners?.length > 0 && (
           <Truncate maxLine={2}>
@@ -153,14 +158,14 @@ const SearchCourseCard = ({
           )}
         </Stack>
       </Card.Section>
-      <Card.Footer className="justify-content-start">
-        <FullChip accent="mortar" icon={Book} text="Course" />
-        {enrolled && (
-          <FullChip
-            accent="indigo"
-            text="ENROLLED"
-          />
-        )}
+      <Card.Footer className="justify-content-end">
+        <Button
+          as={Link}
+          to={linkToCourse}
+          variant="outline-primary"
+        >
+          Learn More
+        </Button>
       </Card.Footer>
     </Card>
   );

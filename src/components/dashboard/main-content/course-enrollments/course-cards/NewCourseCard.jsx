@@ -103,7 +103,6 @@ const NewCourseCard = ({
         )}
         <Button
           variant="outline-primary"
-          className="border-indigo text-indigo border-2"
           href={linkToCourse}
         >
           {viewResumeText}
