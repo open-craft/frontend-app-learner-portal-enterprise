@@ -6,10 +6,11 @@ import {
   Row,
   Col,
   Badge,
+  Icon,
 } from '@edx/paragon';
 import { Link } from 'react-router-dom';
 import { AppContext } from '@edx/frontend-platform/react';
-import { School } from '@edx/paragon/icons';
+import { AccessTimeFilled, School } from '@edx/paragon/icons';
 
 import { CourseContext } from '../CourseContextProvider';
 import CourseSkills from '../CourseSkills';
@@ -19,6 +20,7 @@ import CourseRunCards from './CourseRunCards';
 import {
   getDefaultProgram,
   formatProgramType,
+  findUserEnrollmentForCourseRun,
 } from '../data/utils';
 import { useCoursePartners, useIsCourseAssigned } from '../data/hooks';
 import LicenseRequestedAlert from '../LicenseRequestedAlert';
@@ -36,11 +38,13 @@ const CourseHeader = () => {
     state: {
       course,
       catalog,
+      userEnrollments,
     },
     isPolicyRedemptionEnabled,
   } = useContext(CourseContext);
   const {
     redeemableLearnerCreditPolicies,
+    subscriptionPlan,
   } = useContext(UserSubsidyContext);
   const isCourseAssigned = useIsCourseAssigned(redeemableLearnerCreditPolicies, course?.key);
 
@@ -49,6 +53,18 @@ const CourseHeader = () => {
   const defaultProgram = useMemo(
     () => getDefaultProgram(course.programs),
     [course],
+  );
+
+  const accessUntil = subscriptionPlan
+    ? new Date(subscriptionPlan.expirationDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+    : '';
+
+  const isEnrolled = course.courseRuns.reduce(
+    (acc, courserun) => findUserEnrollmentForCourseRun({
+      userEnrollments,
+      key: courserun.key,
+    }) || acc,
+    false,
   );
 
   return (
@@ -83,6 +99,7 @@ const CourseHeader = () => {
           <Col xs={12} md={7} className="d-flex flex-column justify-content-center">
             <div className="my-4">
               <FullChip icon={School} accent="mortar" text="COURSE" />
+              { isEnrolled && (<FullChip icon={School} accent="green" text="Enrolled" />) }
             </div>
             <div className={classNames({ 'mb-4': !course.shortDescription, 'd-flex': true, 'align-items-center': true })}>
               <h2>{course.title}</h2>
@@ -95,6 +112,9 @@ const CourseHeader = () => {
                 dangerouslySetInnerHTML={{ __html: course.shortDescription }}
               />
             )}
+            <p className="my-4">
+              <strong><Icon src={AccessTimeFilled} class="d-inline" /> Access Until: </strong> {accessUntil}
+            </p>
             {course.skills?.length > 0 && <CourseSkills />}
             {isPolicyRedemptionEnabled && <CourseRunCards />}
             {catalog.containsContentItems && (
