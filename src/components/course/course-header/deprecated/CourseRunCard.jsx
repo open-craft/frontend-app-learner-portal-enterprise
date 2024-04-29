@@ -206,32 +206,40 @@ const CourseRunCard = ({
     courseRun,
   ]);
 
-  return (
-    <Card>
-      <Card.Section>
-        <div className="text-center">
-          {/*
-          <div className="h4 mb-0">{heading}</div>
-          <p className="small">{subHeading}</p>
-        */}
-        </div>
-        {!courseRunArchived && (
-          <EnrollAction
-            enrollLabel={buttonLabel}
-            enrollmentType={enrollmentType}
-            enrollmentUrl={enrollmentUrl}
-            userEnrollment={userEnrollment}
-            subscriptionLicense={subscriptionLicense}
-            courseRunPrice={courseRun?.firstEnrollablePaidSeatPrice}
-          />
-        )}
-      </Card.Section>
-      <CourseRunCardStatus
-        isUserEnrolled={isUserEnrolled}
-        missingUserSubsidyReason={missingUserSubsidyReason}
-      />
-    </Card>
-  );
+  // return (
+  //   <Card>
+  //     <Card.Section>
+  //       <div className="text-center">
+  //         <div className="h4 mb-0">{heading}</div>
+  //         <p className="small">{subHeading}</p>
+  //       </div>
+  //       {!courseRunArchived && (
+  //         <EnrollAction
+  //           enrollLabel={buttonLabel}
+  //           enrollmentType={enrollmentType}
+  //           enrollmentUrl={enrollmentUrl}
+  //           userEnrollment={userEnrollment}
+  //           subscriptionLicense={subscriptionLicense}
+  //           courseRunPrice={courseRun?.firstEnrollablePaidSeatPrice}
+  //         />
+  //       )}
+  //     </Card.Section>
+  //     <CourseRunCardStatus
+  //       isUserEnrolled={isUserEnrolled}
+  //       missingUserSubsidyReason={missingUserSubsidyReason}
+  //     />
+  //   </Card>
+  // );
+  return (!courseRunArchived && (
+    <EnrollAction
+      enrollLabel={buttonLabel}
+      enrollmentType={enrollmentType}
+      enrollmentUrl={enrollmentUrl}
+      userEnrollment={userEnrollment}
+      subscriptionLicense={subscriptionLicense}
+      courseRunPrice={0}
+    />
+  ));
 };
 
 CourseRunCard.propTypes = {

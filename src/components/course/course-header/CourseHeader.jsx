@@ -88,7 +88,7 @@ const CourseHeader = () => {
             </div>
           )}
         </Row>
-        <Row>
+        <Row className="mb-4">
           <Col xs={12} md={{ span: 5 }} className="my-3 mt-lg-0">
             <CoursePreview
               previewImage={course?.image?.src || course?.video?.image}
@@ -97,7 +97,7 @@ const CourseHeader = () => {
             />
           </Col>
           <Col xs={12} md={7} className="d-flex flex-column justify-content-center">
-            <div className="my-4">
+            <div className="mb-4">
               <FullChip icon={School} accent="mortar" text="COURSE" />
               { isEnrolled && (<FullChip icon={School} accent="green" text="Enrolled" />) }
             </div>
@@ -112,7 +112,7 @@ const CourseHeader = () => {
                 dangerouslySetInnerHTML={{ __html: course.shortDescription }}
               />
             )}
-            <p className="my-4">
+            <p className="mb-4">
               <strong><Icon src={AccessTimeFilled} class="d-inline" /> Access Until: </strong> {accessUntil}
             </p>
             {course.skills?.length > 0 && <CourseSkills />}
