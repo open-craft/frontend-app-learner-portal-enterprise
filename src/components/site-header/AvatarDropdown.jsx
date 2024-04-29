@@ -1,9 +1,9 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { getConfig } from '@edx/frontend-platform/config';
 import { AppContext } from '@edx/frontend-platform/react';
-import { AvatarButton, Dropdown } from '@edx/paragon';
+import { Button, Dropdown } from '@edx/paragon';
 import { isDefinedAndNotNull } from '../../utils/common';
 
 const AvatarDropdown = ({ showLabel }) => {
@@ -15,7 +15,6 @@ const AvatarDropdown = ({ showLabel }) => {
   } = getConfig();
   const { enterpriseConfig, authenticatedUser } = useContext(AppContext);
   const { profileImage } = authenticatedUser;
-  const userFirstName = useMemo(() => authenticatedUser?.name.split(' ').shift(), [authenticatedUser]);
   const enterpriseDashboardLink = `/${enterpriseConfig.slug}`;
 
   const idpPresent = isDefinedAndNotNull(enterpriseConfig.identityProvider);
@@ -28,9 +27,9 @@ const AvatarDropdown = ({ showLabel }) => {
     <Dropdown>
       <Dropdown.Toggle
         showLabel={showLabel}
-        as={AvatarButton}
-        src={profileImage.imageUrlMedium}
+        as={Button}
         id="site-header-avatar-dropdown-toggle"
+        variant="outline-primary"
       >
         My Account
       </Dropdown.Toggle>
