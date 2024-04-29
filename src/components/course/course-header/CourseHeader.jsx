@@ -10,7 +10,8 @@ import {
 } from '@edx/paragon';
 import { Link } from 'react-router-dom';
 import { AppContext } from '@edx/frontend-platform/react';
-import { AccessTimeFilled, School } from '@edx/paragon/icons';
+import { AccessTimeFilled } from '@edx/paragon/icons';
+import { ReactComponent as Book2 } from '@material-symbols/svg-400/outlined/book_2-fill.svg';
 
 import { CourseContext } from '../CourseContextProvider';
 import CourseSkills from '../CourseSkills';
@@ -25,7 +26,7 @@ import {
 import { useCoursePartners, useIsCourseAssigned } from '../data/hooks';
 import LicenseRequestedAlert from '../LicenseRequestedAlert';
 import SubsidyRequestButton from '../SubsidyRequestButton';
-import CourseReview from '../CourseReview';
+// import CourseReview from '../CourseReview';
 
 import CoursePreview from './CoursePreview';
 import { UserSubsidyContext } from '../../enterprise-user-subsidy';
@@ -98,8 +99,8 @@ const CourseHeader = () => {
           </Col>
           <Col xs={12} md={7} className="d-flex flex-column justify-content-center">
             <div className="mb-4">
-              <FullChip icon={School} accent="mortar" text="COURSE" />
-              { isEnrolled && (<FullChip icon={School} accent="green" text="Enrolled" />) }
+              <FullChip icon={Book2} accent="mortar" text="COURSE" />
+              { isEnrolled && (<FullChip accent="indigo" text="Enrolled" />) }
             </div>
             <div className={classNames({ 'mb-4': !course.shortDescription, 'd-flex': true, 'align-items-center': true })}>
               <h2>{course.title}</h2>
@@ -112,9 +113,11 @@ const CourseHeader = () => {
                 dangerouslySetInnerHTML={{ __html: course.shortDescription }}
               />
             )}
-            <p className="mb-4">
-              <strong><Icon src={AccessTimeFilled} class="d-inline" /> Access Until: </strong> {accessUntil}
-            </p>
+            <div className="mb-4 d-flex">
+              <Icon src={AccessTimeFilled} />
+              <span className="mx-2"><strong>Access Until:</strong></span>
+              {accessUntil}
+            </div>
             {course.skills?.length > 0 && <CourseSkills />}
             {isPolicyRedemptionEnabled && <CourseRunCards />}
             {catalog.containsContentItems && (

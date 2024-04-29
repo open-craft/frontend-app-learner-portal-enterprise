@@ -3,14 +3,13 @@ import {
 } from '@edx/paragon';
 import {
   AccessTime,
-  Book,
-  CheckCircle,
   Info,
   List,
   RadioButtonUnchecked,
-  PieChart,
 } from '@edx/paragon/icons';
 import PropTypes from 'prop-types';
+import { ReactComponent as Book2 } from '@material-symbols/svg-400/outlined/book_2-fill.svg';
+import { ReactComponent as IncompleteCircle } from '@material-symbols/svg-400/outlined/incomplete_circle-fill.svg';
 
 import dayjs from '../../../../../utils/dayjs';
 import IconChip from '../../../../search/IconChip';
@@ -23,7 +22,7 @@ const SPACER = '\u00A0';
 const PROGRESS_PROPS_BY_STATUS = {
   [COURSE_STATUSES.inProgress]: {
     accent: 'dark-turquoise',
-    icon: PieChart,
+    icon: IncompleteCircle,
   },
   [COURSE_STATUSES.upcoming]: {
     accent: 'slate',
@@ -55,7 +54,7 @@ const NewCourseCard = ({
 }) => {
   const accent = 'mortar';
   const cardType = 'COURSE';
-  const cardTypeIcon = Book;
+  const cardTypeIcon = Book2;
 
   // NOTE: The Figma design involves showing the course duration in the subtitle.
   // Since the courses are open for multiple years in some cases, this shows strange

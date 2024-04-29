@@ -10,7 +10,8 @@ import {
   Button, Card, Icon, Stack, Truncate,
 } from '@edx/paragon';
 import { sendEnterpriseTrackEvent } from '@edx/frontend-enterprise-utils';
-import { AccessTimeFilled, Book, Calendar } from '@edx/paragon/icons';
+import { AccessTimeFilled, Calendar } from '@edx/paragon/icons';
+import { ReactComponent as Book2 } from '@material-symbols/svg-400/outlined/book_2-fill.svg';
 
 import FullChip from './FullChip';
 import { getPrimaryPartnerLogo, isDefinedAndNotNull } from '../../utils/common';
@@ -131,7 +132,7 @@ const SearchCourseCard = ({
       <Card.Header
         title={(
           <>
-            <FullChip accent="mortar" icon={Book} text="Course" className="mb-3" />
+            <FullChip accent="mortar" icon={Book2} text="Course" className="mb-3" />
             {enrolled && (<FullChip accent="indigo" text="ENROLLED" />)}
             <Truncate maxLine={1}>{course.title}</Truncate>
           </>
