@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 // import { AppContext } from '@edx/frontend-platform/react';
+import { Col } from '@edx/paragon';
 
 import { CourseContext } from './CourseContextProvider';
 // import CreatedBy from './CreatedBy';
@@ -31,7 +32,7 @@ const CourseMainContent = () => {
   const { course, activeCourseRun } = state;
 
   return (
-    <>
+    <Col>
       {course.fullDescription && (
         <div className="mb-5">
           <h2>About</h2>
@@ -103,7 +104,7 @@ const CourseMainContent = () => {
           </div>
         )
       }
-    </>
+    </Col>
   );
 };
 
