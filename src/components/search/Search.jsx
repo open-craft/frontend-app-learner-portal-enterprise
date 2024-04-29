@@ -9,7 +9,7 @@ import { getConfig } from '@edx/frontend-platform/config';
 import { SearchContext } from '@edx/frontend-enterprise-catalog-search';
 import { useToggle, Container, Stack } from '@edx/paragon';
 
-import algoliasearch from 'algoliasearch/lite';
+// import algoliasearch from 'algoliasearch/lite';
 import { useDefaultSearchFilters, useSearchCatalogs } from './data/hooks';
 import {
   NUM_RESULTS_PER_PAGE,
@@ -29,17 +29,17 @@ import SearchResults from './SearchResults';
 import { ContentHighlights } from './content-highlights';
 import { features } from '../../config';
 import { Sidebar, MainContent } from '../layout';
-import SearchSidebar from './SearchSidebar';
+// import SearchSidebar from './SearchSidebar';
 import SearchHeader from './SearchHeader';
 
 import { IntegrationWarningModal } from '../integration-warning-modal';
 import { EnterpriseOffersBalanceAlert, UserSubsidyContext } from '../enterprise-user-subsidy';
 import SearchPathway from './SearchPathway';
 import SearchPathwayCard from '../pathway/SearchPathwayCard';
-import { SubsidyRequestsContext } from '../enterprise-subsidy-requests';
+// import { SubsidyRequestsContext } from '../enterprise-subsidy-requests';
 import PathwayModal from '../pathway/PathwayModal';
 import { useEnterpriseCuration } from './content-highlights/data';
-import { useAlgoliaSearch } from '../../utils/hooks';
+// import { useAlgoliaSearch } from '../../utils/hooks';
 
 const Search = () => {
   const { pathwayUUID } = useParams();
@@ -57,15 +57,24 @@ const Search = () => {
     hasNoEnterpriseOffersBalance,
     redeemableLearnerCreditPolicies,
   } = useContext(UserSubsidyContext);
-  const { catalogsForSubsidyRequests } = useContext(SubsidyRequestsContext);
-  const searchCatalogs = useSearchCatalogs({
-    subscriptionPlan,
-    subscriptionLicense,
-    couponCodes,
-    enterpriseOffers,
-    catalogsForSubsidyRequests,
-    redeemableLearnerCreditPolicies,
-  });
+  // const { catalogsForSubsidyRequests } = useContext(SubsidyRequestsContext);
+
+  // NOTE: As we have implemented "enterpriseUUID" based search keys without
+  // using the default search key, the search filters by default have the
+  // enterpriseUUID as a facet to filter for. Adding enterpriseCatalogUUID
+  // as another facet creates a query that returns ZERO results, as each of
+  // these facets aren't cross-linked. So, the catalog based filtering is
+  // disabled here.
+  //
+  // const searchCatalogs = useSearchCatalogs({
+  //   subscriptionPlan,
+  //   subscriptionLicense,
+  //   couponCodes,
+  //   enterpriseOffers,
+  //   catalogsForSubsidyRequests,
+  //   redeemableLearnerCreditPolicies,
+  // });
+  const searchCatalogs = [];
   const { filters } = useDefaultSearchFilters({
     enterpriseConfig,
     searchCatalogs,
@@ -82,7 +91,7 @@ const Search = () => {
   }, [openLearnerPathwayModal, pathwayUUID]);
 
   const config = getConfig();
-  const [courseIndex] = useAlgoliaSearch(config, config.ALGOLIA_INDEX_NAME);
+  // const [courseIndex] = useAlgoliaSearch(config, config.ALGOLIA_INDEX_NAME);
 
   const PAGE_TITLE = `${HEADER_TITLE} - ${enterpriseConfig.name}`;
   const shouldDisplayBalanceAlert = hasNoEnterpriseOffersBalance || hasLowEnterpriseOffersBalance;
