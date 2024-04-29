@@ -10,7 +10,7 @@ import {
 } from '@edx/paragon';
 import { Link } from 'react-router-dom';
 import { AppContext } from '@edx/frontend-platform/react';
-import { AccessTimeFilled } from '@edx/paragon/icons';
+import { AccessTimeFilled, School } from '@edx/paragon/icons';
 import { ReactComponent as Book2 } from '@material-symbols/svg-400/outlined/book_2-fill.svg';
 
 import { CourseContext } from '../CourseContextProvider';
@@ -98,9 +98,9 @@ const CourseHeader = () => {
             />
           </Col>
           <Col xs={12} md={7} className="d-flex flex-column justify-content-center">
-            <div className="mb-4">
+            <div className="mb-4 d-flex">
               <FullChip icon={Book2} accent="mortar" text="COURSE" />
-              { isEnrolled && (<FullChip accent="indigo" text="Enrolled" />) }
+              { isEnrolled && (<FullChip icon={School} accent="indigo" text="ENROLLED" />) }
             </div>
             <div className={classNames({ 'mb-4': !course.shortDescription, 'd-flex': true, 'align-items-center': true })}>
               <h2>{course.title}</h2>
