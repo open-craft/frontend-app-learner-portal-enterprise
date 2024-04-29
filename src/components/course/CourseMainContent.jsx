@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import { AppContext } from '@edx/frontend-platform/react';
+// import { AppContext } from '@edx/frontend-platform/react';
 
 import { CourseContext } from './CourseContextProvider';
-import CreatedBy from './CreatedBy';
-import VerifiedCertPitch from './VerifiedCertPitch';
+// import CreatedBy from './CreatedBy';
+// import VerifiedCertPitch from './VerifiedCertPitch';
 
 function formatSponsorTextList(sponsors) {
   const names = sponsors.map(sponsor => sponsor.name);
@@ -26,7 +26,7 @@ function formatSponsorTextList(sponsors) {
 }
 
 const CourseMainContent = () => {
-  const { config } = useContext(AppContext);
+  // const { config } = useContext(AppContext);
   const { state } = useContext(CourseContext);
   const { course, activeCourseRun } = state;
 
@@ -56,11 +56,11 @@ const CourseMainContent = () => {
       {/*
       <CreatedBy />
       */}
-      {
+      {/*
         activeCourseRun.type === 'verified' && (
           <VerifiedCertPitch />
         )
-      }
+      */}
       {
         course.learnerTestimonials && (
           <div className="mb-5">
