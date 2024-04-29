@@ -36,6 +36,7 @@ const ToDataSharingConsentPage = ({ enrollLabel, enrollmentUrl }) => {
         optimizelyHandler(e);
       }}
       block
+      variant="outline-primary"
     />
   );
 };
