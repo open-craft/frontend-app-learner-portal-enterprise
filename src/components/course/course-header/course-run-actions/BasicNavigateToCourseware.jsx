@@ -11,7 +11,7 @@ import { messages } from './data';
 const BasicNavigateToCourseware = ({ courseRunUrl }) => {
   const intl = useIntl();
   return (
-    <Button href={courseRunUrl}>
+    <Button href={courseRunUrl} variant="outline-primary">
       {intl.formatMessage(messages.viewCourse)}
     </Button>
   );
