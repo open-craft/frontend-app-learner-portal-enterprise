@@ -7,7 +7,7 @@ import CourseMainContent from '../CourseMainContent';
 const CourseAbout = () => (
   <>
     <CourseHeader />
-    <Container size="lg" className="py-5">
+    <Container size="lg">
       <Row>
         <CourseMainContent />
       </Row>

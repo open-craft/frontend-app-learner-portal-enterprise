@@ -34,7 +34,7 @@ const CourseMainContent = () => {
   return (
     <Col>
       {course.fullDescription && (
-        <div className="mb-5">
+        <div className="my-5">
           <h2>About</h2>
           {/* eslint-disable-next-line react/no-danger */}
           <div dangerouslySetInnerHTML={{ __html: course.fullDescription }} />
