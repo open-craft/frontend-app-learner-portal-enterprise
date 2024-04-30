@@ -113,11 +113,13 @@ const CourseHeader = () => {
                 dangerouslySetInnerHTML={{ __html: course.shortDescription }}
               />
             )}
-            <div className="mb-4 d-flex">
-              <Icon src={AccessTimeFilled} />
-              <span className="mx-2"><strong>Access Until:</strong></span>
-              {accessUntil}
-            </div>
+            {subscriptionPlan && (
+              <div className="mb-4 d-flex">
+                <Icon src={AccessTimeFilled} />
+                <span className="mx-2"><strong>Access Until:</strong></span>
+                {accessUntil}
+              </div>
+            )}
             {course.skills?.length > 0 && <CourseSkills />}
             {isPolicyRedemptionEnabled && <CourseRunCards />}
             {catalog.containsContentItems && (
