@@ -7,7 +7,7 @@ export const useRenderContactHelpText = (enterpriseConfig) => {
   const renderContactHelpText = useCallback(
     (LinkComponent = 'a') => {
       const { contactEmail } = enterpriseConfig;
-      const message = 'reach out to your organization\'s edX administrator';
+      const message = 'reach out to your organization\'s administrator';
 
       if (!contactEmail) {
         return message;
