@@ -20,7 +20,7 @@ import CoursesTabComponent from './main-content/CoursesTabComponent';
 // import { MyCareerTab } from '../my-career';
 import EnterpriseLearnerFirstVisitRedirect from '../enterprise-redirects/EnterpriseLearnerFirstVisitRedirect';
 import { UserSubsidyContext } from '../enterprise-user-subsidy';
-import { IntegrationWarningModal } from '../integration-warning-modal';
+// import { IntegrationWarningModal } from '../integration-warning-modal';
 import SubscriptionExpirationModal from './SubscriptionExpirationModal';
 
 const DashboardPage = () => {
@@ -98,7 +98,7 @@ const DashboardPage = () => {
         {/*
         <Tabs defaultActiveKey="courses" onSelect={(k) => onSelectHandler(k)}>{allTabs.filter(tab => tab)}</Tabs>
         */}
-        {enterpriseConfig.showIntegrationWarning && <IntegrationWarningModal isOpen />}
+        {/* enterpriseConfig.showIntegrationWarning && <IntegrationWarningModal isOpen /> */}
         {subscriptionPlan && showExpirationNotifications && <SubscriptionExpirationModal />}
       </Container>
     </>
