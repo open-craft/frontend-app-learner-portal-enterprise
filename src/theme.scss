@@ -164,3 +164,8 @@ $search-border-radius: 4px;
     width: 100% !important;
   }
 }
+
+.dropdown-item.active, .dropdown-item:active {
+  background-color: #00a69c;
+  color: white;
+}
