@@ -168,7 +168,9 @@ const Search = () => {
           )}
         </MainContent>
       </InstantSearch>
-      <IntegrationWarningModal isOpen={enterpriseConfig.showIntegrationWarning} />
+      {/*
+         <IntegrationWarningModal isOpen={enterpriseConfig.showIntegrationWarning} />
+      */}
     </Container>
   );
 };
