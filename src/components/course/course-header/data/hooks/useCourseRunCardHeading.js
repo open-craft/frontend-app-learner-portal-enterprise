@@ -8,7 +8,7 @@ import { getTodaysDate } from '../utils';
 const messages = defineMessages({
   courseStartDate: {
     id: 'useCourseRunCardHeading.startsOnDate',
-    defaultMessage: 'Starts {startDate}',
+    defaultMessage: 'Course Starts {startDate}',
     description: 'Heading for course run card when the course run is upcoming or the course run is self-paced.',
   },
   courseStarted: {
@@ -18,7 +18,7 @@ const messages = defineMessages({
   },
   courseStartedDate: {
     id: 'useCourseRunCardHeading.startedOnDate',
-    defaultMessage: 'Started {startDate}',
+    defaultMessage: 'Course Started {startDate}',
     description: 'Heading for course run card when course run is shown as already started, with its start date shown.',
   },
 });
