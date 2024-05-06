@@ -19,7 +19,9 @@ const SiteHeader = () => {
           <SiteHeaderLogos />
           <nav aria-label="Secondary" className="nav secondary-menu-container align-items-center ml-auto">
             <SiteHeaderNavMenu />
-            <AvatarDropdown />
+            <div className="ml-2">
+              <AvatarDropdown />
+            </div>
           </nav>
         </div>
       </Container>
