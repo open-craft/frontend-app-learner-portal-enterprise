@@ -53,6 +53,11 @@ $header-logo-height-mobile: 1.5rem;
   background: $white;
   .nav-link {
     text-decoration: none;
+    border-radius: $border-radius;
+    &:hover {
+      background-color: $primary;
+      color: $white;
+    }
   }
   .logo,
   .vertical-divider {

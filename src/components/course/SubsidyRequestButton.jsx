@@ -18,7 +18,7 @@ const props = {
     requested: 'Awaiting approval',
   },
   disabledStates: ['requested'],
-  variant: 'primary',
+  variant: 'outline-primary',
   className: 'mb-4 mt-1',
 };
 
@@ -114,7 +114,9 @@ const SubsidyRequestButton = () => {
   };
 
   return (
-    <StatefulButton {...props} state={getButtonState()} onClick={handleRequestButtonClick} />
+    <div>
+      <StatefulButton {...props} state={getButtonState()} onClick={handleRequestButtonClick} />
+    </div>
   );
 };
 

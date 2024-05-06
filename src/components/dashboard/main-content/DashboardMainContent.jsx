@@ -37,7 +37,7 @@ const DashboardMainContent = ({ canOnlyViewHighlightSets }) => {
           <img src={CourseSearchIcon} alt="Search Courses Icon" />
           <h4 className="h3 my-5">Enroll in Learning Paths or Courses</h4>
           <p>
-            <Button as={Link} to={`/${slug}/search`} variant="primary">Explore Now</Button>
+            <Button as={Link} to={`/${slug}/search`} variant="outline-primary">Explore Now</Button>
           </p>
         </div>
       </CourseEnrollments>
