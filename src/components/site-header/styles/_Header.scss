@@ -51,6 +51,7 @@ $header-logo-height-mobile: 1.5rem;
 
 .site-header-desktop {
   background: $white;
+  border-bottom: 3px solid $brand;
   .nav-link {
     text-decoration: none;
     border-radius: $border-radius;
