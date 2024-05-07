@@ -137,7 +137,7 @@ const NewCourseCard = ({
           </div>
           <Card.Header
             title={title}
-            subtitle={orgName}
+            subtitle={course.owners?.length ? course.owners[0].name : orgName}
             className="compact-header"
           />
           {progress && (
