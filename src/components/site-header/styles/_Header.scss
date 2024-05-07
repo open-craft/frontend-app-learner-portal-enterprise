@@ -57,10 +57,8 @@ $header-logo-height-mobile: 1.5rem;
   }
   .logo,
   .vertical-divider {
-    height: $header-logo-height-desktop;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin: 0.5rem;
+    max-height: 4.125rem;
+    padding: 10px;
   }
   .main-nav {
     .nav-link {
