@@ -19,6 +19,22 @@ export const UserSubsidyContext = createContext();
 const UserSubsidy = ({ children }) => {
   const { enterpriseConfig, authenticatedUser } = useContext(AppContext);
 
+  // Hack to avoid "No License" issue when the user does SSO Registration+login and
+  // visits with a cookie without roles.
+  // The LoginRefresh component is supposed to handle this scenario. But somehow it
+  // doesn't seem to. Tried called `fetchAuthenticatedUser()` after the LoginRefresh
+  // in a number of places from components to hooks - everytime, it left the app in
+  // the "loading..." state. It is probably because calling fetchAuthenticatedUser
+  // destroys the `authenticatedUser` object and replaces it with another one and
+  // somewhere in the app, it doesn't trigger rerender becuase it's not being tracked
+  // correctly.
+  //
+  // Don't have the time to debug the full app and just pushing out this hack as a
+  // workaround for now.
+  if (!!authenticatedUser.activationKey && (authenticatedUser.roles.length === 0)) {
+    window.location.reload();
+  }
+
   const { userId } = authenticatedUser;
   // Subscriptions
   const {
