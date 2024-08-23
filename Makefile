@@ -8,7 +8,7 @@ i18n = ./src/i18n
 transifex_input = $(i18n)/transifex_input.json
 
 # This directory must match .babelrc .
-transifex_temp = ./temp/babel-plugin-react-intl
+transifex_temp = ./temp/babel-plugin-formatjs
 
 NPM_TESTS=build i18n_extract lint test
 
@@ -62,12 +62,12 @@ pull_translations:
 	mkdir src/i18n/messages
 	cd src/i18n/messages \
       && atlas pull $(ATLAS_OPTIONS) \
-               translations/frontend-platform/src/i18n/messages:frontend-platform \
-               translations/paragon/src/i18n/messages:paragon \
                translations/frontend-component-footer/src/i18n/messages:frontend-component-footer \
-               translations/frontend-app-learner-portal-enterprise/src/i18n/messages:frontend-app-learner-portal-enterprise
+               translations/paragon/src/i18n/messages:paragon \
+               translations/frontend-app-learner-portal-enterprise/src/i18n/messages:frontend-app-learner-portal-enterprise \
+               translations/frontend-platform/src/i18n/messages:frontend-enterprise
 
-	$(intl_imports) frontend-platform paragon frontend-component-footer frontend-app-learner-portal-enterprise
+	$(intl_imports) frontend-component-footer paragon frontend-enterprise frontend-app-learner-portal-enterprise
 endif
 
 # This target is used by Travis.
