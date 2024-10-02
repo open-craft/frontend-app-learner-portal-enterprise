@@ -1,4 +1,4 @@
-import { Stack, Button } from '@edx/paragon';
+import { Stack, Button } from '@openedx/paragon';
 
 import StatefulEnroll from '../../../../stateful-enroll';
 import { COURSE_MODES_MAP } from '../../../data/constants';

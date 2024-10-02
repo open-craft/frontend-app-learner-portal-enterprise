@@ -1,4 +1,4 @@
-import { Form } from '@edx/paragon';
+import { Form } from '@openedx/paragon';
 import { connectRefinementList } from 'react-instantsearch-dom';
 
 // Implementation based on sample code from

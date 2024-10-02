@@ -7,7 +7,7 @@ import {
   Container,
   Tabs,
   Tab,
-} from '@edx/paragon';
+} from '@openedx/paragon';
 import { AppContext } from '@edx/frontend-platform/react';
 import { sendEnterpriseTrackEvent } from '@edx/frontend-enterprise-utils';
 import { ProgramListingPage } from '../program-progress';

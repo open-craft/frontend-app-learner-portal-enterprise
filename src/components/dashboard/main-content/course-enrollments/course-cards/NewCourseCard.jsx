@@ -1,12 +1,12 @@
 import {
   Alert, Button, Card, Icon, ProgressBar, useMediaQuery, breakpoints,
-} from '@edx/paragon';
+} from '@openedx/paragon';
 import {
   AccessTime,
   Info,
   List,
   RadioButtonUnchecked,
-} from '@edx/paragon/icons';
+} from '@openedx/paragon/icons';
 import PropTypes from 'prop-types';
 import { ReactComponent as Book2 } from '@material-symbols/svg-400/outlined/book_2-fill.svg';
 import { ReactComponent as IncompleteCircle } from '@material-symbols/svg-400/outlined/incomplete_circle-fill.svg';

@@ -4,7 +4,7 @@ import React, {
 import { Helmet } from 'react-helmet';
 import {
   Container, Row, Col, Skeleton,
-} from '@edx/paragon';
+} from '@openedx/paragon';
 import { AppContext } from '@edx/frontend-platform/react';
 import { logError } from '@edx/frontend-platform/logging';
 import { useHistory } from 'react-router-dom';

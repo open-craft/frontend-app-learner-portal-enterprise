@@ -7,10 +7,10 @@ import {
   Col,
   Badge,
   Icon,
-} from '@edx/paragon';
+} from '@openedx/paragon';
 import { Link } from 'react-router-dom';
 import { AppContext } from '@edx/frontend-platform/react';
-import { AccessTimeFilled, School } from '@edx/paragon/icons';
+import { AccessTimeFilled, School } from '@openedx/paragon/icons';
 import { ReactComponent as Book2 } from '@material-symbols/svg-400/outlined/book_2-fill.svg';
 
 import { CourseContext } from '../CourseContextProvider';

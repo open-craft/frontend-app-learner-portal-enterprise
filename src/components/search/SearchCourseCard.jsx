@@ -8,9 +8,9 @@ import { getConfig } from '@edx/frontend-platform/config';
 import { camelCaseObject } from '@edx/frontend-platform/utils';
 import {
   Button, Card, Icon, Stack, Truncate,
-} from '@edx/paragon';
+} from '@openedx/paragon';
 import { sendEnterpriseTrackEvent } from '@edx/frontend-enterprise-utils';
-import { AccessTimeFilled, Calendar } from '@edx/paragon/icons';
+import { AccessTimeFilled, Calendar } from '@openedx/paragon/icons';
 import { ReactComponent as Book2 } from '@material-symbols/svg-400/outlined/book_2-fill.svg';
 
 import FullChip from './FullChip';

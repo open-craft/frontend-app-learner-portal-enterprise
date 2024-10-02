@@ -1,4 +1,4 @@
-import { Badge, Chip, Icon } from '@edx/paragon';
+import { Badge, Chip, Icon } from '@openedx/paragon';
 import PropTypes from 'prop-types';
 
 const IconChip = ({ accent, icon, text }) => (

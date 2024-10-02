@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row } from '@edx/paragon';
+import { Container, Row } from '@openedx/paragon';
 
 import CourseHeader from '../course-header/CourseHeader';
 import CourseMainContent from '../CourseMainContent';

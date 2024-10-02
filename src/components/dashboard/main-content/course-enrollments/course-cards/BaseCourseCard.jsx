@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
   Dropdown, Badge, IconButton, Icon, Skeleton,
-} from '@edx/paragon';
+} from '@openedx/paragon';
 import camelCase from 'lodash.camelcase';
 import { AppContext } from '@edx/frontend-platform/react';
 import { sendEnterpriseTrackEvent } from '@edx/frontend-enterprise-utils';
 import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
 import { getConfig } from '@edx/frontend-platform/config';
-import { MoreVert } from '@edx/paragon/icons';
+import { MoreVert } from '@openedx/paragon/icons';
 
 import dayjs from '../../../../../utils/dayjs';
 import { EmailSettingsModal } from './email-settings';

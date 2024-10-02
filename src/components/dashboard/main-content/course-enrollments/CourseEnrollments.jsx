@@ -1,5 +1,5 @@
 import React, { useContext, useMemo, useState } from 'react';
-import { MediaQuery, Stack, breakpoints } from '@edx/paragon';
+import { MediaQuery, Stack, breakpoints } from '@openedx/paragon';
 
 import PropTypes from 'prop-types';
 import CourseSection from './CourseSection';

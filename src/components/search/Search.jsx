@@ -7,7 +7,7 @@ import { Configure, InstantSearch, RefinementList } from 'react-instantsearch-do
 import { AppContext } from '@edx/frontend-platform/react';
 import { getConfig } from '@edx/frontend-platform/config';
 import { SearchContext } from '@edx/frontend-enterprise-catalog-search';
-import { useToggle, Container, Stack } from '@edx/paragon';
+import { useToggle, Container, Stack } from '@openedx/paragon';
 
 // import algoliasearch from 'algoliasearch/lite';
 import { useDefaultSearchFilters, useSearchCatalogs } from './data/hooks';

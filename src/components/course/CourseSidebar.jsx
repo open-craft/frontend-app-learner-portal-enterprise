@@ -2,10 +2,10 @@ import React, { useContext } from 'react';
 import ISO6391 from 'iso-639-1';
 import { sendEnterpriseTrackEvent } from '@edx/frontend-enterprise-utils';
 
-import { Hyperlink } from '@edx/paragon';
+import { Hyperlink } from '@openedx/paragon';
 import {
   AccessTime, Equalizer, Institution, Person, School, Speed, Tag, VideoFile,
-} from '@edx/paragon/icons';
+} from '@openedx/paragon/icons';
 import { AppContext } from '@edx/frontend-platform/react';
 import { CourseContext } from './CourseContextProvider';
 import CourseSidebarListItem from './CourseSidebarListItem';

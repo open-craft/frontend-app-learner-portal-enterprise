@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Badge, Row, Col } from '@edx/paragon';
+import { Badge, Row, Col } from '@openedx/paragon';
 import dayjs from 'dayjs';
 import {
   LEARNER_CREDIT_SUMMARY_CARD_TITLE,

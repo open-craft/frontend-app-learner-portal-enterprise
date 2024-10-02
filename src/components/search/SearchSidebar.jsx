@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { connectStateResults } from 'react-instantsearch-dom';
-import { Stack } from '@edx/paragon';
+import { Stack } from '@openedx/paragon';
 import { useNbHitsFromSearchResults } from '@edx/frontend-enterprise-catalog-search';
 
 import SearchFilter from './SearchFilter';

@@ -1,4 +1,4 @@
-import { Form } from '@edx/paragon';
+import { Form } from '@openedx/paragon';
 
 const CourseEnrollmentsFilter = ({ groups, current, selectGroup }) => (
   <Form.Group className="mt-5">

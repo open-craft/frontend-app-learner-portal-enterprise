@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from '@edx/paragon';
+import { Container } from '@openedx/paragon';
 
 import { useExternalEnrollmentFailureReason, useMinimalCourseMetadata } from '../data/hooks';
 import CourseSummaryCard from '../../executive-education-2u/components/CourseSummaryCard';

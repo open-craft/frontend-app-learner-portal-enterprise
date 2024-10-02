@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 // import { AppContext } from '@edx/frontend-platform/react';
-import { Col } from '@edx/paragon';
+import { Col } from '@openedx/paragon';
 
 import { CourseContext } from './CourseContextProvider';
 // import CreatedBy from './CreatedBy';

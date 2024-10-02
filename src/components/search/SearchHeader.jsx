@@ -1,4 +1,4 @@
-import { Navbar } from '@edx/paragon';
+import { Navbar } from '@openedx/paragon';
 import PropTypes from 'prop-types';
 import { SearchBox, connectStateResults } from 'react-instantsearch-dom';
 import { useNbHitsFromSearchResults } from '@edx/frontend-enterprise-catalog-search';

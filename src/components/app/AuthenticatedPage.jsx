@@ -6,7 +6,7 @@ import { useParams, useLocation } from 'react-router-dom';
 import { LoginRedirect } from '@edx/frontend-enterprise-logistration';
 import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
 import { getConfig } from '@edx/frontend-platform/config';
-import { Hyperlink } from '@edx/paragon';
+import { Hyperlink } from '@openedx/paragon';
 import { EnterprisePage } from '../enterprise-page';
 import { Layout } from '../layout';
 import LoginRefresh from './LoginRefresh';

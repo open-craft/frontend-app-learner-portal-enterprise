@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
   Alert, Button, Container, Col, Hyperlink, Row,
-} from '@edx/paragon';
-import { CheckCircle } from '@edx/paragon/icons';
+} from '@openedx/paragon';
+import { CheckCircle } from '@openedx/paragon/icons';
 
 import { getConfig } from '@edx/frontend-platform/config';
 import { AppContext } from '@edx/frontend-platform/react';
