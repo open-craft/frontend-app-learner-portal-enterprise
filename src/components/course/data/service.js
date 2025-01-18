@@ -47,18 +47,30 @@ export default class CourseService {
       );
     }
 
+    const availableCourseRuns = getAvailableCourseRuns(courseDetails);
+    let availableCourseRunKeys = availableCourseRuns.map(({ key }) => key);
+
     // Check for the course_run_key URL param and remove all other course run data
     // if the given course run key is for an available course run.
     if (this.courseRunKey) {
-      const availableCourseRuns = getAvailableCourseRuns(courseDetails);
-      const availableCourseRunKeys = availableCourseRuns.map(({ key }) => key);
       if (availableCourseRunKeys.includes(this.courseRunKey)) {
         courseDetails.canonicalCourseRunKey = this.courseRunKey;
         courseDetails.courseRunKeys = [this.courseRunKey];
         courseDetails.courseRuns = availableCourseRuns.filter(obj => obj.key === this.courseRunKey);
         courseDetails.advertisedCourseRunUuid = courseDetails.courseRuns[0].uuid;
       }
+    } else {
+      // When the course run is not specified, filter course_run keys
+      // to make sure the "Enroll" buttons are shown only for the items
+      // in the catalog.
+      const res = await this.filterContentKeys(availableCourseRunKeys);
+      if (res.status === 200) {
+        availableCourseRunKeys = res.data.filtered_content_keys;
+        courseDetails.courseRunKeys = courseDetails.courseRunKeys.filter(k => availableCourseRunKeys.includes(k));
+        courseDetails.courseRuns = courseDetails.courseRuns.filter(run => availableCourseRunKeys.includes(run.key));
+      }
     }
+
     return {
       courseDetails,
       userEnrollments: courseData[1],
@@ -193,5 +205,16 @@ export default class CourseService {
     const url = `${this.config.ENTERPRISE_ACCESS_BASE_URL}/api/v1/policy-redemption/enterprise-customer/${this.enterpriseUuid}/can-redeem/`;
     const urlWithParams = `${url}?${queryParams.toString()}`;
     return this.authenticatedHttpClient.get(urlWithParams);
+  }
+
+  /**
+   * Service method to filter the content keys to the items included in the enterprise catalog.
+   *
+   * @param {array} content_keys list of the content keys (course ids)
+   * @returns Promise for the post request from the authenticated http client.
+   * */
+  filterContentKeys(content_keys) {
+    const url = `${this.config.ENTERPRISE_CATALOG_API_BASE_URL}/api/v1/enterprise-customer/${this.enterpriseUuid}/filter_content_items/`;
+    return this.authenticatedHttpClient.post(url, {content_keys});
   }
 }
