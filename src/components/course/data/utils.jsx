@@ -129,6 +129,11 @@ export const numberWithPrecision = (number, precision = 2) => number.toFixed(pre
 // See https://openedx.atlassian.net/wiki/spaces/WS/pages/1045200922/Enroll+button+and+Course+Run+Selector+Logic
 // for more detailed documentation on course run selection and the enroll button.
 export function getActiveCourseRun(course) {
+  // This is a hacky way to set the active course run. However, for the current use case
+  // the enterprise is bound to get a single course run in after filtering in CourseService
+  if (course.courseRuns.length == 1) {
+    return course.courseRuns[0];
+  }
   return course.courseRuns.find(courseRun => courseRun.uuid === course.advertisedCourseRunUuid);
 }
 
