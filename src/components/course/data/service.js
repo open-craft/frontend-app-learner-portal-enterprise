@@ -68,6 +68,7 @@ export default class CourseService {
         availableCourseRunKeys = res.data.filtered_content_keys;
         courseDetails.courseRunKeys = courseDetails.courseRunKeys.filter(k => availableCourseRunKeys.includes(k));
         courseDetails.courseRuns = courseDetails.courseRuns.filter(run => availableCourseRunKeys.includes(run.key));
+        this.activeCourseRun = courseDetails.courseRuns[0];
       }
     }
 
