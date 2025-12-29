@@ -9,7 +9,14 @@ const SearchHeader = ({ searchResults }) => {
   return (
     <Navbar expand="lg">
       <div>
-        <Navbar.Brand as="h1">
+        <style>
+          {`
+            .course-finder-heading {
+              font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji !important;
+            }
+          `}
+        </style>
+        <Navbar.Brand as="h2" className="course-finder-heading">
           Course Finder
         </Navbar.Brand>
         {/*

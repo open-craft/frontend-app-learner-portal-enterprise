@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { useRouteMatch } from 'react-router-dom';
 import edXLogo from '@edx/brand/logo.svg';
 import { Stack } from '@edx/paragon';
+import { getConfig } from '@edx/frontend-platform/config';
 import { AppContext } from '@edx/frontend-platform/react';
 import { COURSE_TYPE_PARTNER_LOGOS } from '../course/data/constants';
 
@@ -10,6 +11,7 @@ const SiteHeaderLogos = () => {
   const courseType = courseTypeMatch?.params?.courseType;
   const { enterpriseConfig } = useContext(AppContext);
   const courseTypePartnerLogo = courseType && COURSE_TYPE_PARTNER_LOGOS[courseType];
+  const { LMS_BASE_URL } = getConfig();
 
   let mainLogo = (
     <img
@@ -22,9 +24,9 @@ const SiteHeaderLogos = () => {
 
   if (!enterpriseConfig.disableSearch) {
     mainLogo = (
-      <Link to={`/${enterpriseConfig.slug}`} data-testid="header-logo-link-id">
+      <a href={`${LMS_BASE_URL}/dashboard`} data-testid="header-logo-link-id">
         {mainLogo}
-      </Link>
+      </a>
     );
   }
 

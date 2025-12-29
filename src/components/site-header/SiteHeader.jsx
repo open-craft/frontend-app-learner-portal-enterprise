@@ -18,7 +18,7 @@ const SiteHeader = () => {
         <div className="nav-container position-relative d-flex align-items-center">
           <SiteHeaderLogos />
           <nav aria-label="Secondary" className="nav secondary-menu-container align-items-center ml-auto">
-            <SiteHeaderNavMenu />
+            {/* <SiteHeaderNavMenu /> */}
             <div className="ml-2">
               <AvatarDropdown />
             </div>
@@ -36,7 +36,7 @@ const SiteHeader = () => {
         className="site-header-mobile d-flex justify-content-between align-items-center shadow"
       >
         <div className="w-100 d-flex justify-content-start">
-          <Menu className="position-static">
+          {/* <Menu className="position-static">
             <MenuTrigger
               tag="button"
               className="icon-button"
@@ -52,7 +52,7 @@ const SiteHeader = () => {
             >
               <SiteHeaderNavMenu enterpriseConfig={enterpriseConfig} />
             </MenuContent>
-          </Menu>
+          </Menu> */}
         </div>
         <div className="w-100 d-flex justify-content-center">
           <SiteHeaderLogos enterpriseConfig={enterpriseConfig} />

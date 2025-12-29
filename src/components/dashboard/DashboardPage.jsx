@@ -2,7 +2,7 @@ import React, {
   useContext, useEffect, useMemo,
 } from 'react';
 import { Helmet } from 'react-helmet';
-import { useHistory, useLocation } from 'react-router-dom';
+import { Redirect, useHistory, useLocation } from 'react-router-dom';
 import {
   Container,
   Tabs,
@@ -86,6 +86,8 @@ const DashboardPage = () => {
     //   </Tab>
     // ),
   ];
+
+  return <Redirect to={`/${enterpriseConfig.slug}/search`} />;
 
   return (
     <>
