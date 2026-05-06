@@ -149,20 +149,20 @@ const Search = () => {
           )}
           {(contentType === undefined || contentType.length === 0) && (
             <Stack className="my-2" gap={2}>
-              {!hasRefinements && <ContentHighlights />}
+              {/* {!hasRefinements && <ContentHighlights />}
               {features.ENABLE_PATHWAYS && (canOnlyViewHighlightSets === false) && <SearchPathway filter={filters} />}
-              {features.ENABLE_PROGRAMS && (canOnlyViewHighlightSets === false) && <SearchProgram filter={filters} />}
+              {features.ENABLE_PROGRAMS && (canOnlyViewHighlightSets === false) && <SearchProgram filter={filters} />} */}
               {canOnlyViewHighlightSets === false && <SearchCourse filter={filters} />}
             </Stack>
           )}
 
-          {contentType?.length > 0 && contentType[0] === CONTENT_TYPE_PATHWAY && (
+          {/* {contentType?.length > 0 && contentType[0] === CONTENT_TYPE_PATHWAY && (
             <SearchResults className="py-5" hitComponent={SearchPathwayCard} title={PATHWAY_TITLE} contentType={CONTENT_TYPE_PATHWAY} />
           )}
 
           {contentType?.length > 0 && contentType[0] === CONTENT_TYPE_PROGRAM && (
             <SearchResults className="py-5" hitComponent={SearchProgramCard} title={PROGRAM_TITLE} contentType={CONTENT_TYPE_PROGRAM} />
-          )}
+          )} */}
 
           {contentType?.length > 0 && contentType[0] === CONTENT_TYPE_COURSE && (
             <SearchResults className="py-5" hitComponent={SearchCourseCard} title={COURSE_TITLE} contentType={CONTENT_TYPE_COURSE} />
