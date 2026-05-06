@@ -81,8 +81,9 @@ const Search = () => {
   });
 
   // Flag to toggle highlights visibility
-  const { enterpriseConfig: { uuid: enterpriseUUID } } = useContext(AppContext);
-  const { enterpriseCuration: { canOnlyViewHighlightSets } } = useEnterpriseCuration(enterpriseUUID);
+  // const { enterpriseConfig: { uuid: enterpriseUUID } } = useContext(AppContext);
+  // const { enterpriseCuration: { canOnlyViewHighlightSets } } = useEnterpriseCuration(enterpriseUUID);
+  const canOnlyViewHighlightSets = false;
 
   useEffect(() => {
     if (pathwayUUID) {
