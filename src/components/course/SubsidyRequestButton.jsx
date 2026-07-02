@@ -71,18 +71,24 @@ const SubsidyRequestButton = () => {
   /**
    * Show subsidy request button if:
    *  - subsidy requests is enabled
-   *    - user has a subsidy request for course
+   *  - user is not already enrolled in the course
+   *  - user has no applicable subsidy for the course
+   *  AND
+   *    - user has a subsidy request for the course
    *      OR
    *    - course is in catalog
-   *    - user not already enrolled in crouse
-   *    - user has no subsidy for course
+   *
+   * An applicable subsidy (e.g. an auto-applied license that reaches the browser after a
+   * request was already submitted) always wins over a pending request. Without the explicit
+   * `!userSubsidyApplicableToCourse` guard, a stale `userHasSubsidyRequest` would keep the
+   * button latched on "Awaiting approval" even once the learner has a usable subsidy and the
+   * normal "Enroll" CTA is available.
    */
   const hasSubsidyRequestsEnabled = subsidyRequestConfiguration?.subsidyRequestsEnabled;
-  const showSubsidyRequestButton = hasSubsidyRequestsEnabled && (
-    userHasSubsidyRequest || (
-      subsidyRequestCatalogsApplicableToCourse.size > 0 && !isUserEnrolled && !userSubsidyApplicableToCourse
-    )
-  );
+  const showSubsidyRequestButton = hasSubsidyRequestsEnabled
+    && !isUserEnrolled
+    && !userSubsidyApplicableToCourse
+    && (userHasSubsidyRequest || subsidyRequestCatalogsApplicableToCourse.size > 0);
 
   if (!showSubsidyRequestButton) {
     return null;
