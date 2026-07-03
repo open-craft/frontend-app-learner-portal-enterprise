@@ -2,8 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   fetchAuthenticatedUser,
-  getAuthenticatedUser,
-  setAuthenticatedUser,
+  hydrateAuthenticatedUser,
 } from '@edx/frontend-platform/auth';
 import { AppContext } from '@edx/frontend-platform/react';
 import { Container } from '@edx/paragon';
@@ -24,15 +23,19 @@ const LoginRefresh = ({ children }) => {
     const refreshJWT = async () => {
       await loginRefresh();
       // Refreshing the JWT only replaces the cookie; the in-memory `authenticatedUser`
-      // (snapshotted into AppContext at app init) still carries the pre-refresh roles.
-      // Re-decode the refreshed cookie, then publish the change through the
-      // interface-level `setAuthenticatedUser`, which emits AUTHENTICATED_USER_CHANGED
-      // so AppProvider updates AppContext. `fetchAuthenticatedUser()` alone does NOT
-      // emit that event — it updates the auth service's internal state only, leaving
-      // every AppContext consumer (e.g. the enterprise_learner role check that gates
-      // license auto-apply) reading stale roles for the rest of the session.
+      // (snapshotted into AppContext at app init) still carries the pre-refresh roles,
+      // so consumers like the enterprise_learner check that gates license auto-apply
+      // would read stale roles for the rest of the session.
+      //
+      // `fetchAuthenticatedUser()` re-decodes the refreshed cookie, but (a) it does not
+      // emit AUTHENTICATED_USER_CHANGED, so AppProvider would never propagate the new
+      // user into AppContext, and (b) it replaces the user object outright, dropping
+      // account fields (e.g. `profileImage`) that `hydrateAuthenticatedUser()` may have
+      // already merged — EnterprisePage blocks on `profileImage`, so dropping it hangs
+      // the app on its loading screen. Re-hydrating merges those fields back onto the
+      // freshly-decoded user AND emits AUTHENTICATED_USER_CHANGED.
       await fetchAuthenticatedUser();
-      setAuthenticatedUser(getAuthenticatedUser());
+      await hydrateAuthenticatedUser();
       setIsRefreshingJWT(false);
     };
     if (isRefreshingJWT) {
