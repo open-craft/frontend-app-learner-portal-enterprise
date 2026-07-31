@@ -129,17 +129,6 @@ export function useSubscriptionLicense({
       // when the enterprise customer has an SSO/LMS provider configured.
       if (!result && enterpriseIdentityProvider && isEnterpriseLearner && hasCustomerAgreementData) {
         result = await requestAutoAppliedUserLicense(customerAgreementConfig.uuid);
-
-        // The auto-apply request can fail on the client (e.g. a network timeout, or a
-        // duplicate request when a license was already auto-applied) while the license is
-        // still created/activated server-side. `requestAutoAppliedUserLicense` swallows that
-        // error and returns null, which would leave the learner with no license in the UI and
-        // incorrectly route them into Browse & Request ("Request enrollment" / "Awaiting
-        // approval"). Reconcile by re-fetching the user's licenses so a license that was
-        // applied server-side still reaches the browser.
-        if (!result) {
-          result = await fetchExistingUserLicense(enterpriseId);
-        }
       }
 
       return result;
