@@ -1,3 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap");
+
+body {
+  font-family: "Archivo", sans-serif !important;
+}
+
 // font size
 $lead-font-size: 1.25rem !important;
 
@@ -168,4 +174,30 @@ $search-border-radius: 4px;
 .dropdown-item.active, .dropdown-item:active {
   background-color: #00a69c;
   color: white;
+}
+
+header {
+  border-bottom: 3px solid #AD182DFF;
+
+  a[href$="/help"] {
+    display: none;
+  }
+
+  button {
+    border-radius: 6px !important;
+    gap: 4px;
+
+    color: #166a79 !important;
+    background-color: white !important;
+    border-color: #166a79 !important;
+
+    &:hover, &:focus, &:active {
+      background-color: #166a79 !important;
+      color: white !important;
+    }
+  }
+
+  .user-dropdown a {
+    color: #166a79 !important;
+  }
 }

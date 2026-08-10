@@ -1,11 +1,11 @@
 import React, { useContext, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-import SiteFooter from '@edx/frontend-component-footer';
+import { FooterSlot } from '@edx/frontend-component-footer';
 import { AppContext } from '@edx/frontend-platform/react';
 
 import { SystemWideWarningBanner } from '../system-wide-banner';
-import { SiteHeader } from '../site-header';
+import Header from '@edx/frontend-component-header';
 import { useStylesForCustomBrandColors } from './data/hooks';
 
 export const TITLE_TEMPLATE = '%s - edX';
@@ -45,11 +45,11 @@ const Layout = ({ children }) => {
           {config.MAINTENANCE_ALERT_MESSAGE}
         </SystemWideWarningBanner>
       )}
-      <SiteHeader />
+      <Header />
       <main id="content" className="fill-vertical-space">
         {children}
       </main>
-      <SiteFooter />
+      <FooterSlot />
     </>
   );
 };
